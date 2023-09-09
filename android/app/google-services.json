@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "531608785984",
+    "project_id": "lojavirtualprojetoifal",
+    "storage_bucket": "lojavirtualprojetoifal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531608785984:android:297766d5e78aed1a1ffba5",
+        "android_client_info": {
+          "package_name": "br.com.lojavirtualprojetoifal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531608785984-107cbsrf1fibt6cbarjk2hrs77c04mqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaxE9NNp_Ecp-9KG7zTuNsy2LXySop67w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531608785984-107cbsrf1fibt6cbarjk2hrs77c04mqv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531608785984-k9l3t21of83nl403pcs4h5f3fr4fmdej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.libelulas.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531608785984:android:abee1a38ecf190241ffba5",
+        "android_client_info": {
+          "package_name": "com.example.libelulas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531608785984-107cbsrf1fibt6cbarjk2hrs77c04mqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaxE9NNp_Ecp-9KG7zTuNsy2LXySop67w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531608785984-107cbsrf1fibt6cbarjk2hrs77c04mqv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531608785984-k9l3t21of83nl403pcs4h5f3fr4fmdej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.libelulas.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
