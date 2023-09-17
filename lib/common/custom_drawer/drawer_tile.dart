@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:libelulas/models/page_manager.dart';
+import 'package:provider/provider.dart';
 
 class DrawerTile extends StatelessWidget {
   DrawerTile({required this.iconData, required this.title, required this.page});
@@ -11,6 +13,7 @@ class DrawerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        context.read<PageManager>().setPage(page);
         debugPrint('toquei $page');
       },
       child: SizedBox(
