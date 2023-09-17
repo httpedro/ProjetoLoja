@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
 import 'package:libelulas/models/page_manager.dart';
+import 'package:libelulas/screens/login/login_screen.dart';
 import 'package:provider/provider.dart';
 
 
@@ -14,6 +15,7 @@ class BaseScreen extends StatelessWidget {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
+          LoginScreen(),
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
