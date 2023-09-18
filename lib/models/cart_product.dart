@@ -1,17 +1,17 @@
 
-import 'package:libelulas/models/product.dart';
+//import 'package:libelulas/models/product.dart';
+//
+//class CartProduct {
 
-class CartProduct {
+  //CartProduct.fromProduct(this.product){
+    //productId = product.id;
+    //quantity = 1;
+    //size = product.selectedSize.name;
+  //}
 
-  CartProduct.fromProduct(this.product){
-    productId = product.id;
-    quantity = 1;
-    size = product.selectedSize.name;
-  }
+  //String productId;
+  //int quantity;
+  //String size;
 
-  String productId;
-  int quantity;
-  String size;
-
-  Product product;
-}
+  //Product product;
+//}

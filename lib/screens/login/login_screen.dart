@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:libelulas/helpers/validators.dart';
 import 'package:libelulas/models/user.dart';
@@ -7,11 +8,13 @@ import 'package:provider/provider.dart';
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
-  final formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> skaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: skaffoldKey,
       appBar: AppBar(
         title: const Text("entrar"),
         centerTitle: true,
@@ -55,7 +58,12 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
                       context.read<UsuarioAtenticacao>().signIn(
-                          Usuario(emailController.text, passController.text));
+                          Usuario(emailController.text, passController.text),
+                          (e) {
+                        print(e);
+                      }, () {
+                        print("Sucesso");
+                      });
                     }
                   },
                   child: Text("Entrar"),
