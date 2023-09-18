@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:libelulas/models/user_maneger.dart';
 import 'package:libelulas/screens/base/base_screen.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -17,17 +19,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Loja Libélula',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        scaffoldBackgroundColor: Color.fromARGB(255, 255, 87, 238),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return Provider<UsuarioAtenticacao>(
+      create: (_) => UsuarioAtenticacao(),
+      child: MaterialApp(
+        title: 'Loja Libélula',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+          scaffoldBackgroundColor: Color.fromARGB(255, 255, 87, 238),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: BaseScreen(),
       ),
-      home: BaseScreen(),
     );
   }
 }
-
