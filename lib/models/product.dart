@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/*import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Product {
   Product.fromDocument(DocumentSnapshot document) {
@@ -11,4 +11,4 @@ class Product {
   String name;
   String description;
   List<String> images;
-}
+}*/
