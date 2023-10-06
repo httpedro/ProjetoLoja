@@ -44,40 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyACUY8QqwV3lkuZOCs9MULb8gKCfxrhHOk',
-    appId: '1:531608785984:web:ae4819eb60fce4901ffba5',
-    messagingSenderId: '531608785984',
-    projectId: 'lojavirtualprojetoifal',
-    authDomain: 'lojavirtualprojetoifal.firebaseapp.com',
-    storageBucket: 'lojavirtualprojetoifal.appspot.com',
-    measurementId: 'G-LX21QQFD11',
+    apiKey: 'AIzaSyD4-vDYIcZ1No8yOTept9y-uRn4qV-BIJY',
+    appId: '1:933972329643:web:d809379c7d26592fc9a3ee',
+    messagingSenderId: '933972329643',
+    projectId: 'projetolojaflutter-5b711',
+    authDomain: 'projetolojaflutter-5b711.firebaseapp.com',
+    storageBucket: 'projetolojaflutter-5b711.appspot.com',
+    measurementId: 'G-JTY10NW6MZ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDaxE9NNp_Ecp-9KG7zTuNsy2LXySop67w',
-    appId: '1:531608785984:android:abee1a38ecf190241ffba5',
-    messagingSenderId: '531608785984',
-    projectId: 'lojavirtualprojetoifal',
-    storageBucket: 'lojavirtualprojetoifal.appspot.com',
+    apiKey: 'AIzaSyAm7L0jgmPHImJfEHbpU0RykTclj13046k',
+    appId: '1:933972329643:android:bf33ed80d9ad8a29c9a3ee',
+    messagingSenderId: '933972329643',
+    projectId: 'projetolojaflutter-5b711',
+    storageBucket: 'projetolojaflutter-5b711.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCRgnzrnNzn3ms8mFmKJqorLT9FsdzdCx8',
-    appId: '1:531608785984:ios:952307248f5cd1531ffba5',
-    messagingSenderId: '531608785984',
-    projectId: 'lojavirtualprojetoifal',
-    storageBucket: 'lojavirtualprojetoifal.appspot.com',
-    iosClientId: '531608785984-s4aim04ca1s6an7fhvrl8oqgcimsfqs2.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCVWjZsudFctt48GdS06Mgpqbw5bV_R4Go',
+    appId: '1:933972329643:ios:5e2096f19f254296c9a3ee',
+    messagingSenderId: '933972329643',
+    projectId: 'projetolojaflutter-5b711',
+    storageBucket: 'projetolojaflutter-5b711.appspot.com',
     iosBundleId: 'com.example.libelulas',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCRgnzrnNzn3ms8mFmKJqorLT9FsdzdCx8',
-    appId: '1:531608785984:ios:fbe24183e9850b6a1ffba5',
-    messagingSenderId: '531608785984',
-    projectId: 'lojavirtualprojetoifal',
-    storageBucket: 'lojavirtualprojetoifal.appspot.com',
-    iosClientId: '531608785984-k9l3t21of83nl403pcs4h5f3fr4fmdej.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCVWjZsudFctt48GdS06Mgpqbw5bV_R4Go',
+    appId: '1:933972329643:ios:d37ea9bd789777b5c9a3ee',
+    messagingSenderId: '933972329643',
+    projectId: 'projetolojaflutter-5b711',
+    storageBucket: 'projetolojaflutter-5b711.appspot.com',
     iosBundleId: 'com.example.libelulas.RunnerTests',
   );
 }
