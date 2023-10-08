@@ -16,8 +16,19 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       key: skaffoldKey,
       appBar: AppBar(
-        title: const Text("entrar"),
+        title: const Text("Entrar"),
         centerTitle: true,
+        actions: <Widget>[
+          TextButton(
+            onPressed: (){
+              Navigator.of(context).pushReplacementNamed('/signup');
+            },
+            child: const Text(
+              "CRIAR CONTA",
+              style: TextStyle(fontSize: 18, color: Colors.black),
+            )
+          )
+        ],
       ),
       body: Center(
         child: Card(
