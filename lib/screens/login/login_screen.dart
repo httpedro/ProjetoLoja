@@ -69,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
                       context.read<UsuarioAtenticacao>().signIn(
-                          Usuario(emailController.text, passController.text),
+                          Usuario(email: emailController.text, password: passController.text),
                           (e) {
                         print(e);
                       }, () {

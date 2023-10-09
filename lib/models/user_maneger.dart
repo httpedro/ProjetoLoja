@@ -10,7 +10,7 @@ class UsuarioAtenticacao {
     try {
       final UserCredential result = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
-              email: userInfo.email, password: userInfo.password);
+              email: userInfo.email.toString(), password: userInfo.password.toString());
       print(result.user?.uid);
       onSuccess();
     } on PlatformException catch (e) {
