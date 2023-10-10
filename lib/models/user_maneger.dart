@@ -4,6 +4,7 @@ import 'package:libelulas/helpers/firebase_erros.dart';
 import 'package:libelulas/models/user.dart';
 
 class UsuarioAtenticacao {
+
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   void signIn(Usuario userInfo, Function onFail, Function onSuccess) async {
@@ -13,6 +14,19 @@ class UsuarioAtenticacao {
               email: userInfo.email.toString(), password: userInfo.password.toString());
       print(result.user?.uid);
       onSuccess();
+    } on PlatformException catch (e) {
+      print(e);
+      onFail(errosAutenticar(e.code));
+    }
+  }
+
+  void signUp(Usuario userInfo, Function onFail, Function onSuccess) async {
+    try{
+      final UserCredential result = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+            email: userInfo.email.toString(), password: userInfo.password.toString());
+      print(result.user?.uid);
+      onSuccess();      
     } on PlatformException catch (e) {
       print(e);
       onFail(errosAutenticar(e.code));
