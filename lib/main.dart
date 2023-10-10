@@ -13,12 +13,6 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
-
-  //Lendo documentos da pasta 'pedidos'
-  QuerySnapshot snapshot = await FirebaseFirestore.instance.collection('pedidos').get();
-  for(DocumentSnapshot document in snapshot.docs){
-    print(document.data());
-  }
 }
 
 

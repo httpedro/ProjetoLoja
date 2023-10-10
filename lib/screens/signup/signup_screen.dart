@@ -86,20 +86,22 @@ class SignUpScreen extends StatelessWidget {
                           );
                         }
 
-                        context.read<UsuarioAtenticacao>().signUp(
-                          user, 
-                          (e){
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Falha ao cadastrar usuário: $e'),
-                              )
+                        else{
+                          context.read<UsuarioAtenticacao>().signUp(
+                            user, 
+                            (e){
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Falha ao cadastrar usuário: $e'),
+                                )
+                              );
+                            }, 
+                            (){
+                              debugPrint('sucesso');
+                              //TODO: POP
+                            }
                             );
-                          }, 
-                          (){
-                            debugPrint('sucesso');
-                            //TODO: POP
-                          }
-                          );
+                        }
                       }
                     },
                     child: const Text('Criar Conta'),
