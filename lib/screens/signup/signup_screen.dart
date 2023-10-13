@@ -9,6 +9,8 @@ class SignUpScreen extends StatelessWidget {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   final Usuario user = Usuario();
 
+  SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -28,8 +30,9 @@ class SignUpScreen extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(hintText: 'Nome completo'),
                   validator: (name){
-                    if(name.toString().isEmpty)
+                    if(name.toString().isEmpty) {
                       return 'Campo obrigatório';
+                    }
                     return null;
                   },
                   onSaved: (name) => user.name = name,
@@ -38,9 +41,9 @@ class SignUpScreen extends StatelessWidget {
                   decoration: const InputDecoration(hintText: 'E-mail'),
                   keyboardType: TextInputType.emailAddress,
                   validator: (email){
-                    if(email.toString().isEmpty)
+                    if(email.toString().isEmpty) {
                       return 'Campo obrigatório';
-                    else if(!emailValid(email.toString()))
+                    } else if(!emailValid(email.toString()))
                       return 'E-mail inválido';
                     return null;
                   },
@@ -50,9 +53,9 @@ class SignUpScreen extends StatelessWidget {
                   decoration: const InputDecoration(hintText: 'Senha'),
                   obscureText: true,
                   validator: (pass){
-                    if(pass.toString().isEmpty)
+                    if(pass.toString().isEmpty) {
                       return 'Campo obrigatório';
-                    else if(pass.toString().length < 6)
+                    } else if(pass.toString().length < 6)
                       return 'Senha muito curta';
                     return null;
                   },
@@ -62,9 +65,9 @@ class SignUpScreen extends StatelessWidget {
                   decoration: const InputDecoration(hintText: 'Repita a senha'),
                   obscureText: true,
                   validator: (pass){
-                    if(pass.toString().isEmpty)
+                    if(pass.toString().isEmpty) {
                       return 'Campo obrigatório';
-                    else if(pass.toString().length < 6)
+                    } else if(pass.toString().length < 6)
                       return 'Senha muito curta';
                     return null;
                   },
@@ -98,9 +101,9 @@ class SignUpScreen extends StatelessWidget {
                             }, 
                             (){
                               debugPrint('sucesso');
-                              //TODO: POP
+                              Navigator.of(context).pop();
                             }
-                            );
+                          );
                         }
                       }
                     },

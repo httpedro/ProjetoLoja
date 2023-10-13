@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:libelulas/models/user_maneger.dart';
 import 'package:libelulas/screens/base/base_screen.dart';
+import 'package:libelulas/screens/login/login_screen.dart';
 import 'package:libelulas/screens/signup/signup_screen.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<UsuarioAtenticacao>(
       create: (_) => UsuarioAtenticacao(),
+      lazy: false,
       child: MaterialApp(
         title: 'Loja Libélula',
         debugShowCheckedModeBanner: false,
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
         initialRoute: '/base',
         onGenerateRoute: (settings){
           switch(settings.name){
+            case '/login':
+              return MaterialPageRoute(
+                builder:   (_) => LoginScreen());
             case '/signup':
               return MaterialPageRoute(
                 builder: (_) => SignUpScreen()

@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 class BaseScreen extends StatelessWidget {
   final PageController pageController = PageController();
 
+  BaseScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Provider(create: (_)=>PageManager(pageController),
@@ -15,27 +17,32 @@ class BaseScreen extends StatelessWidget {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
-          LoginScreen(),
           Scaffold(
-            drawer: CustomDrawer(),
+            drawer: const CustomDrawer(),
             appBar: AppBar(
               title: const Text('Home'),
             ),
           ),
           Scaffold(
-            drawer: CustomDrawer(),
+            drawer: const CustomDrawer(),
+            appBar: AppBar(
+              title: const Text('Home'),
+            ),
+          ),
+          Scaffold(
+            drawer: const CustomDrawer(),
             appBar: AppBar(
               title: const Text('Home2'),
             ),
           ),
           Scaffold(
-            drawer: CustomDrawer(),
+            drawer: const CustomDrawer(),
             appBar: AppBar(
               title: const Text('Home3'),
             ),
           ),
           Scaffold(
-            drawer: CustomDrawer(),
+            drawer: const CustomDrawer(),
             appBar: AppBar(
               title: const Text('Home4'),
             ),

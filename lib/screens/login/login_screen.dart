@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:libelulas/helpers/validators.dart';
 import 'package:libelulas/models/user.dart';
@@ -10,6 +9,8 @@ class LoginScreen extends StatelessWidget {
   final TextEditingController passController = TextEditingController();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> skaffoldKey = GlobalKey<ScaffoldState>();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +55,9 @@ class LoginScreen extends StatelessWidget {
                   autocorrect: false,
                   obscureText: true,
                   validator: (pass) {
-                    if (pass!.isEmpty || pass.length < 6)
+                    if (pass!.isEmpty || pass.length < 6) {
                       return 'senha invalida';
+                    }
                     return null;
                   },
                 ),
@@ -74,10 +76,11 @@ class LoginScreen extends StatelessWidget {
                         print(e);
                       }, () {
                         print("Sucesso");
+                        Navigator.of(context).pop();
                       });
                     }
                   },
-                  child: Text("Entrar"),
+                  child: const Text("Entrar"),
                 ),
               ],
             ),
