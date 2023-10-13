@@ -14,7 +14,7 @@ class CustomDrawerHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Text(
+              const Text(
                 'Libelula\nStore',
                 style: TextStyle(
                   fontSize: 34,
@@ -25,7 +25,7 @@ class CustomDrawerHeader extends StatelessWidget {
                 'Olá, ${usuarioAtenticacao.user?.name ?? ''}',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -42,7 +42,7 @@ class CustomDrawerHeader extends StatelessWidget {
                   usuarioAtenticacao.isLoggedIn
                     ? 'Sair'
                     : 'Entre ou cadastra-se >',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.deepPurple,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
