@@ -24,7 +24,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListView(
             children: <Widget>[
-              CustomDrawerHeader(),
+              const CustomDrawerHeader(),
               const Divider(),
               DrawerTile(
                 iconData: Icons.home,

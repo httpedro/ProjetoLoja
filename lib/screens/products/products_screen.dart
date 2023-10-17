@@ -1,27 +1,83 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
 import 'package:libelulas/models/product_manager.dart';
 import 'package:libelulas/screens/products/components/product_list_tile.dart';
+import 'package:libelulas/screens/products/components/search_dialog.dart';
 import 'package:provider/provider.dart';
 
 class ProductsScreen extends StatelessWidget {
+  const ProductsScreen({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: const Text('Produtos'),
+        title: Consumer<ProductManager>(
+          builder: (_, productManager, __){
+            if(productManager.search.isEmpty){
+              return const Text('Produtos');
+            } else {
+              return LayoutBuilder(
+                builder: (_, constraints){
+                  return GestureDetector(
+                    onTap: () async {
+                      final search = await showDialog<String>(context: context, builder: (_) => SearchDialog(productManager.search));
+                        if(search != null){
+                          productManager.search = search;
+                        }
+                    },
+                    child: Container(
+                      width: constraints.biggest.width,
+                      child: Text(
+                        productManager.search,
+                        textAlign: TextAlign.center,
+                        )
+                    ),
+                  );
+                },
+              );
+            }
+          },
+        ),
         centerTitle: true,
+        actions: <Widget>[
+          Consumer<ProductManager>(
+            builder: (_, productManager, __){
+              if(productManager.search.isEmpty){
+                return IconButton(
+                  icon: const Icon(Icons.search),
+                  onPressed: () async {
+                    final search = await showDialog<String>(context: context, builder: (_) => SearchDialog(productManager.search));
+                    if(search != null){
+                      productManager.search = search;
+                    }
+                  },
+                );
+              } else {
+                return IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () async {
+                    productManager.search = '';
+                  },
+                );
+              }
+            }
+          )
+        ],
       ),
       body: Consumer<ProductManager>(
-        builder: (_, productManager, __) {
+        builder: (_, productManager, __){
+          final filteredProducts = productManager.filteredProducts;
           return ListView.builder(
-              itemCount: productManager.allProducts.length,
-              itemBuilder: (_, index) {
-                return ProductListTile(productManager.allProducts[index]);
-              });
+            padding: const EdgeInsets.all(4),
+            itemCount: filteredProducts.length,
+            itemBuilder: (_, index){
+              return ProductListTile(filteredProducts[index]);
+            }
+          );
         },
-      ),
-    ); //
+      )
+    );
   }
-}*/
+}

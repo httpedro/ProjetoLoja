@@ -1,14 +1,15 @@
-/*import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Product {
-  Product.fromDocument(DocumentSnapshot document) {
-    id = document.documentID;
-    name = document['name'] as String;
-    description = document['description'] as String;
-    images = List<String>.from(document.data['images'] as List<dynamic>);
+  Product.fromDocument(DocumentSnapshot document){
+    id = document.id;
+    name = document.get('name') as String;
+    description = document.get('description') as String;
+    images = List<String>.from(document.get('images') as List<dynamic>);
   }
-  String id;
-  String name;
-  String description;
-  List<String> images;
-}*/
+
+  String? id;
+  String? name;
+  String? description;
+  List<String>? images;
+}

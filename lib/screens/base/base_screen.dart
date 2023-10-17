@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
 import 'package:libelulas/models/page_manager.dart';
-import 'package:libelulas/screens/login/login_screen.dart';
+import 'package:libelulas/screens/products/products_screen.dart';
 import 'package:provider/provider.dart';
 
 
@@ -23,12 +23,7 @@ class BaseScreen extends StatelessWidget {
               title: const Text('Home'),
             ),
           ),
-          Scaffold(
-            drawer: const CustomDrawer(),
-            appBar: AppBar(
-              title: const Text('Home'),
-            ),
-          ),
+          const ProductsScreen(),
           Scaffold(
             drawer: const CustomDrawer(),
             appBar: AppBar(

@@ -3,6 +3,8 @@ import 'package:libelulas/models/user_maneger.dart';
 import 'package:provider/provider.dart';
 
 class CustomDrawerHeader extends StatelessWidget {
+  const CustomDrawerHeader({super.key});
+
   @override
   Widget build(BuildContext context){
     return Container(
