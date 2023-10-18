@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:libelulas/models/product.dart';
+import 'package:libelulas/models/user_maneger.dart';
 import 'package:libelulas/screens/product/components/size_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +27,7 @@ class ProductScreen extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             AspectRatio(
-              aspectRatio: 1.3,
+              aspectRatio: 1.6,
               child: CarouselSlider(
                 items: product.images!.map((url) {
                   return Image.network(
@@ -46,7 +47,7 @@ class ProductScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Text(
                     product.name as String,
@@ -105,7 +106,31 @@ class ProductScreen extends StatelessWidget {
                     children: product.sizes!.map((s){
                       return SizeWidget(size: s);
                     }).toList(),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  if(product.hasStock)
+                    Consumer2<UsuarioAtenticacao, Product>(
+                      builder: (_, usuarioAtenticacao, product, __){
+                        return SizedBox(
+                          height: 44,
+                          child: ElevatedButton(
+                            onPressed: product.selectedSize != null ? (){
+                              if(usuarioAtenticacao.isLoggedIn){
+                                //TODO: ADICIONAR AO CARRINHO
+                              } else {
+                                Navigator.of(context).pushNamed('/login');
+                              }
+                            } : null,
+                            child: Text(
+                              usuarioAtenticacao.isLoggedIn ? 'Adicionar ao carrinho' : 'Entre para comprar',
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          )
+                        );
+                      },
+                    )
                 ],
               ),
             )

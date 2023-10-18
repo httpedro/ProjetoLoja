@@ -11,27 +11,34 @@ class SizeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('build $size');
-
     final product = context.watch<Product>();
+    final selected = size == product.selectedSize;
+
+    Color color;
+    if(!size!.hasStock)
+      color = Colors.red.withAlpha(50);
+    else if(selected)
+      color = Theme.of(context).primaryColor;
+    else
+      color = Colors.grey;
 
     return GestureDetector(
       onTap: (){
         if(size!.hasStock){
-          product.selectedSize = size!;
+          product.selectedSize = size;
         }
       },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: !size!.hasStock ? Colors.red.withAlpha(50) : Colors.grey
+            color: color
           ),
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Container(
-              color: !size!.hasStock ? Colors.red.withAlpha(50) : Colors.grey,
+              color: color,
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
               child: Text(
                 size!.name as String,
@@ -39,11 +46,20 @@ class SizeWidget extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Text(
                 'R\$ ${size!.price!.toStringAsFixed(2)}',
                 style: TextStyle(
-                  color: !size!.hasStock ? Colors.red.withAlpha(50) : Colors.grey,
+                  color: color,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+              child: Text(
+                'Estoque: ${size!.stock.toString()}',
+                style: TextStyle(
+                  color: color, 
                 ),
               ),
             )

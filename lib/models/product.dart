@@ -21,11 +21,24 @@ class Product extends ChangeNotifier{
 
   ItemSize? _selectedSize;
 
-  ItemSize get selectedSize => _selectedSize!;
+  ItemSize? get selectedSize => _selectedSize;
 
-  set selectedSize(ItemSize value){
+  set selectedSize(ItemSize? value) {
     _selectedSize = value;
     print(value);
     notifyListeners();
   }
+
+  int? get totalStock {
+    int stock = 0;
+    for(final size in sizes!){
+      stock += size.stock as int;
+    }
+    return stock;
+  }
+
+  bool get hasStock {
+    return totalStock! > 0;
+  }
+
 }
