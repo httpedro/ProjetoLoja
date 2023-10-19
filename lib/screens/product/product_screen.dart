@@ -106,7 +106,7 @@ class ProductScreen extends StatelessWidget {
                     children: product.sizes!.map((s){
                       return SizeWidget(size: s);
                     }).toList(),
-                  ),
+                  ), //wrap
                   const SizedBox(
                     height: 20,
                   ),
@@ -118,13 +118,17 @@ class ProductScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: product.selectedSize != null ? (){
                               if(usuarioAtenticacao.isLoggedIn){
-                                //TODO: ADICIONAR AO CARRINHO
+                                context.read<CartManager>().addToCart(product);
+                                Navigator.of(context).pushNamed('/cart');
                               } else {
                                 Navigator.of(context).pushNamed('/login');
                               }
                             } : null,
+                            color: primaryColor,
+                            textColor: Colors.white,
                             child: Text(
-                              usuarioAtenticacao.isLoggedIn ? 'Adicionar ao carrinho' : 'Entre para comprar',
+                              usuarioAtenticacao.isLoggedIn 
+                                  ? 'Adicionar ao carrinho' : 'Entre para comprar',
                               style: const TextStyle(fontSize: 18),
                             ),
                           )
