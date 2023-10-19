@@ -34,5 +34,3 @@ class CartManager {
     }
   }
 } 
-
-//teste commit
