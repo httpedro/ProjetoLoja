@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:libelulas/common/custom_drawer/custom_icon_button.dart';
+import 'package:libelulas/models/cart_product.dart';
 
 class CartTitle extends StatelessWidget{
 
@@ -21,13 +23,13 @@ class CartTitle extends StatelessWidget{
             ), //SizedBox
             Expanded(
               child: Padding(
-                padding const EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 16),
                 child: Column(
                   children: <Widget>[
                     Text(
                       cartProduct.product.name,
                       style: TextStyle(
-                        fontWeight: fontWeight.w500,
+                        fontWeight: FontWeight.w500,
                         fontSize: 17.0,
                       ), //TextStyle
                     ), //Text
@@ -35,21 +37,43 @@ class CartTitle extends StatelessWidget{
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Text(
                         'Tamanho: ${cartProduct.size}',
-                        style: TextStyle(fontWeight: fontWeight.w300),
+                        style: TextStyle(fontWeight: FontWeight.w300),
                       ), //text
                     ), //Padding
                     Text(
-                      'R\$ ${cartProduct.unitPrice.toStringAsFixed(2)}'
+                      'R\$ ${cartProduct.unitPrice.toStringAsFixed(2)}',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
-                        fontSize: 16.0
-                        fontWeight: fontWeight.bold
-                      ) //Textstyle
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold
+                      ),
                     )
                   ]
-                  ), //column
-                ), //Padding
-            ) //Expanded
+                  ),
+                ),
+            ),
+            Column(
+              children: <Widget>[
+                CustomIconButton(
+                  iconData: Icons.add,
+                  color: Theme.of(context).primaryColor,
+                  onTap: () {
+                    
+                  },
+                ),
+                Text(
+                  '${cartProduct.quantity}',
+                  style: const TextStyle(fontSize: 20),
+              ),
+              CustomIconButton(
+                iconData: Icons.remove,
+                color: Theme.of(context).primaryColor,
+                onTap: () {
+                  
+                },
+              ),
+          ],
+          )
           ],
         ), //Row
       ), //Padding

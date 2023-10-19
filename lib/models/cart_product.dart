@@ -11,22 +11,21 @@ class CartProduct {
     size = product.selectedSize.name;
   }
 
-  CartProduct.fromProduct(DocumentSnapshot document){
-        productId = document.data['pid'] as String;
-        quantity = document.data ['quantity'] as int;
-        size = document.data['size'] as String;
+  CartProduct.fromDocument(DocumentSnapshot document){
+    productId = document.data['pid'] as String;
+    quantity = document.data ['quantity'] as int;
+    size = document.data['size'] as String;
 
-        firestore.document('products/$productId').get().then(
-          (doc) => product = Product.fromDocument(document)
-        );
+    firestore.document('products/$productId').get().then(
+      (doc) => product = Product.fromDocument(doc)
+    );
+  }
 
-      }
+  final Firestore firestore = Firestore.instance;
 
-    final Firestore firestore = Firestore.instance;
-
-    String productId;
-    int quantity;
-    String size;
+  String productId;
+  int quantity;
+  String size;
 
     Product product;
 
@@ -53,8 +52,12 @@ class CartProduct {
     return product.id == productId && product.selectedSize.name == size;
   }
 
+  void increment(){
+    quantity++;
+  }
+
+  void decrement(){
+    quantity--;
+  }
+
 }
-
-
-
-//feshow
