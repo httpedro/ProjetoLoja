@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libelulas/models/cart_manager.dart';
+import 'package:libelulas/screens/cart/components/cart_tile.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
@@ -12,10 +13,21 @@ class CartScreen extends StatelessWidget {
       ),
       body: Consumer<CartManager>(
         builder: (_, cartManager, __){
-          return Column(
-            children: cartManager.items.map((cartProduct) => CartTitle(cartProduct)
-            ).toList(),
-          ); //Column
+          return ListView(
+            children: <Widget>[
+              Column(
+                children: cartManager.items.map(
+                        (cartProduct) => CartTitle(cartProduct)
+                ).toList(),
+              ), //Column
+              PriceCard(
+                buttonText: 'Continuar para entrega',
+                onPressed: cartManager.isCartValid ? (){
+
+                } : null,
+              ),
+            ],
+          ); 
         },
       ), // Consumer
     ); // Scarfold

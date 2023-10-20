@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:libelulas/models/cart_manager.dart';
+import 'package:libelulas/models/home.manager.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/product_manager.dart';
 import 'package:libelulas/models/user_maneger.dart';
@@ -32,17 +33,21 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UsuarioAtenticacao(),
           lazy: false,
-        ),
+        ), //ChangeNotifierProvider
         ChangeNotifierProvider(
           create: (_) => ProductManager(),
           lazy: false,
         ),
-        ProxyProvider<UsuarioAtenticacao, CartManager>(
+        Provider(
+          create: (_) => HomeManager(),
+          lazy: false,
+        )
+        ChangeNotifierProxyProvider<UsuarioAtenticacao, CartManager>(
           create: (_) => CartManager(),
           lazy: false,
           update: (_, UsuarioAtenticacao, CartManager) =>
             CartManager..updateUser(UsuarioAtenticacao),
-        ),
+        ), //ChangeNotifierProxyProvider
       ],
       child: MaterialApp(
         title: 'Loja Libélula',
