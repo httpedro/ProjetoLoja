@@ -4,7 +4,7 @@ import 'package:libelulas/models/cart_manager.dart';
 import 'package:libelulas/models/home.manager.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/product_manager.dart';
-import 'package:libelulas/models/user_maneger.dart';
+import 'package:libelulas/models/user_manager.dart';
 import 'package:libelulas/screens/base/base_screen.dart';
 import 'package:libelulas/screens/login/login_screen.dart';
 import 'package:libelulas/screens/product/product_screen.dart';
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           create: (_) => ProductManager(),
           lazy: false,
         ),
-        Provider(
+        ChangeNotifierProvider(
           create: (_) => HomeManager(),
           lazy: false,
         )
@@ -47,7 +47,13 @@ class MyApp extends StatelessWidget {
           lazy: false,
           update: (_, UsuarioAtenticacao, CartManager) =>
             CartManager..updateUser(UsuarioAtenticacao),
-        ), //ChangeNotifierProxyProvider
+        ),
+        ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
+          create: (_) => AdminUsersManager(),
+          lazy: false,
+          update: (_, userManager, adminUsersManager) =>
+            adminUsersManager..updateUser(userManager),
+        )
       ],
       child: MaterialApp(
         title: 'Loja Libélula',

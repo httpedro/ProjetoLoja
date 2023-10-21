@@ -75,12 +75,19 @@ class UsuarioAtenticacao extends ChangeNotifier {
   Future<void> _loadCurrentUser({User? firebaseUser}) async{
     final User? currentUser = firebaseUser ?? auth.currentUser;
     if(currentUser != null){
-      final DocumentSnapshot docUser = await FirebaseFirestore.instance.collection('users').doc(currentUser.uid).get();
+      final DocumentSnapshot docUser = await FirebaseFirestore.instance.collection('users')
+        .doc(currentUser.uid).get();
       user = Usuario.fromDocument(docUser);
-      print(user!.name);
-      print(user!.email);
+
+    final docAdmin = await firestore.collection('admins').document(user.id).get();
+    if(docAdmin.exists){
+      user.admin = true;
+
+    }
 
       notifyListeners();
     }
   }
+
+  bool get adminEnabled => user != null && user.admin;
 }

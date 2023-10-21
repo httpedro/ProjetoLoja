@@ -8,6 +8,8 @@ class Usuario {
 
   String? confirmPassword;
 
+  bool admin = false;
+
   Usuario({this.email, this.password, this.name, this.id});
 
   Usuario.fromDocument(DocumentSnapshot document){
