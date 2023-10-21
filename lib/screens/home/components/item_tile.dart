@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libelulas/models/product_manager.dart';
-import 'package:libelulas/models/section.dart';
+import 'package:libelulas/models/section_item.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -12,12 +12,12 @@ class ItemTile extends StatelessWidget {
     final SectionItem item;
 
     @override
-    widget build(BuildContext context) {
+    Widget build(BuildContext context) {
         return GestureDetector(
             onTap:(){
                 if(item.product != null){
                     final product = context.read<ProductManager>()
-                        .findProductById(item.product);
+                        .findProductById(item.product as String);
                     if(product != null){
                         Navigator.of(context).pushNamed('/product', arguments: product);
                     }
@@ -27,7 +27,7 @@ class ItemTile extends StatelessWidget {
                 aspectRatio: 1,
                 child: FadeInImage.memoryNetwork(
                     placeholder: kTransparentImage,
-                    image: item.image
+                    image: item.image as String,
                     fit: BoxFit.cover,
                 ),
             ),

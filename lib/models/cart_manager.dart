@@ -10,11 +10,11 @@ class CartManager extends ChangeNotifier {
 
   List<CartProduct> items = [];
 
-  User user;
+  Usuario? user;
 
   num productsPrice = 0.0;
 
-  void updateUser(UserManager userManager){
+  void updateUser(UsuarioAtenticacao userManager){
     user = userManager.user;
     items.clear();
 
@@ -24,10 +24,10 @@ class CartManager extends ChangeNotifier {
   }
 
   Future<void> _loadCartItems() async {
-    final QuerySnapshot cartSnap = await user.cartReference.getDocuments();
+    final QuerySnapshot cartSnap = await user!.cartReference.get();
 
-    items = cartSnap.documents.map(
-      (d) => CartProduct.fromProduct(d)..addListener(_onItemUpdated)).toList();
+    items = cartSnap.docs.map(
+      (d) => CartProduct.fromDocument(d)..addListener(_onItemUpdated)).toList();
   }
 
   void addToCart(Product product){
@@ -38,8 +38,8 @@ class CartManager extends ChangeNotifier {
     final cartProduct = CartProduct.fromProduct(product);
     cartProduct.addListener(_onItemUpdated);
     items.add(cartProduct);
-    user.cartReference.add(cartProduct.toCartItemMap())
-      .then((doc) => cartProduct.id = doc.documentID);
+    user!.cartReference.add(cartProduct.toCartItemMap())
+      .then((doc) => cartProduct.id = doc.id);
     _onItemUpdated();
     }
     notifyListeners();
@@ -47,8 +47,8 @@ class CartManager extends ChangeNotifier {
 
   void removeOfCart(CartProduct cartProduct){
     items.removeWhere((p) => p.id == cartProduct.id);
-    user.cartReference.document(cartProduct.id).delete();
-    cartProduct.removeListener(_onItemUpdated)
+    user!.cartReference.doc(cartProduct.id).delete();
+    cartProduct.removeListener(_onItemUpdated);
     notifyListeners();
   }
 
@@ -56,12 +56,12 @@ class CartManager extends ChangeNotifier {
     productsPrice = 0.0;
 
     for(int i = 0; i<items.length; i++){
-      final cartProduct = items[i]
+      final cartProduct = items[i];
 
       if(cartProduct.quantity == 0){
         removeOfCart(cartProduct);
         i--;
-        continue
+        continue;
       }
 
       productsPrice += cartProduct.totalPrice;
@@ -74,10 +74,11 @@ class CartManager extends ChangeNotifier {
   }
 
   void _updateCartProduct(CartProduct cartProduct){
-    if(cartProduct.id != null)
-      user.cartReference.document(cartProduct.id)
-        .updateData(cartProduct.toCartItemMap());
+    if(cartProduct.id != null){
+      user!.cartReference.doc(cartProduct.id)
+        .update(cartProduct.toCartItemMap());
     }
+  }
 
     bool get isCartValid {
       for(final cartProduct in items){

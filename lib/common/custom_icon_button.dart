@@ -5,9 +5,9 @@ class CustomIconButton extends StatelessWidget {
 
   const CustomIconButton({this.iconData, this.color, this.onTap});
 
-  final IconData iconData;
-  final Color color;
-  final VoidCallback onTap;
+  final IconData? iconData;
+  final Color? color;
+  final VoidCallback? onTap;
 
 
   @override

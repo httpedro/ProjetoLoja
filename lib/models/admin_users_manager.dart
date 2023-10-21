@@ -6,37 +6,37 @@ import 'package:libelulas/models/user_manager.dart';
 
 class AdminUsersManager extends ChangeNotifier {
 
-List<User> users = [];
+List<Usuario> users = [];
 
-final Firestore firestore = Firestore.instance;
+final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-StreamSubscription _subscription;
+StreamSubscription? _subscription;
 
-  void updateUser(UserManager userManager){
-    _subscription.cancel();
-    if(userManager.adminEnabled){
+  void updateUser(UsuarioAtenticacao? userManager) {  // Adicione '?' para tornar userManager opcional
+    _subscription?.cancel();  // Use '?' para cancelar se _subscription não for nulo
+    if (userManager != null && userManager.adminEnabled) {  // Verifique se userManager não é nulo
       _listenToUsers();
     } else {
       users.clear();
       notifyListeners();
     }
-  }
+  }       
 
   void _listenToUsers(){
     _subscription = firestore.collection('users').snapshots()
       .listen((snapshot){
-      users = snapshot.documents.map((d) => User.fromDocument(d)).toList();
+      users = snapshot.docs.map((d) => Usuario.fromDocument(d)).toList();
           users.sort((a, b) =>
-            a.name.toLowerCase().compareTo(b.name.toLowerCase())); 
+            a.name!.toLowerCase().compareTo(b.name!.toLowerCase())); 
       notifyListeners();
     });
   }
 
-  List<String> get names => users.map((e) => e.name).toList();
+  List<String> get names => users.map((e) => e.name as String).toList();
 
   @override
   void dispose() {
-    _subscription.cancel();
+    _subscription?.cancel();  // Use '?' para cancelar se _subscription não for nulo
     super.dispose();
   }
 }

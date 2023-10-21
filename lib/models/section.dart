@@ -4,13 +4,18 @@ import 'package:libelulas/models/section_item.dart';
 class Section {
 
   Section.fromDocument(DocumentSnapshot document){
-    name = document.data['name'] as String;
-    type = document.data['type'] as String;
-    items = (document.data['items'] as List).map(
-      (i) => SectionItem.fromMap(i as Map<String, dynamic)).toList();
+    name = document.get('name') as String;
+    type = document.get('type') as String;
+    items = (document.get('items') as List).map(
+      (i) => SectionItem.fromMap(i as Map<String, dynamic>)).toList();
   }
 
-  String name;
-  String type;
-  List<SectionItem> items;
+  String? name;
+  String? type;
+  List<SectionItem>? items;
+
+  @override
+  String toString() {
+    return 'Section{name: $name, type: $type, items: $items}';
+  }
 }

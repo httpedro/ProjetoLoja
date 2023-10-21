@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:libelulas/models/cart_manager.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/user_manager.dart';
 import 'package:libelulas/screens/product/components/size_widget.dart';
@@ -124,8 +125,10 @@ class ProductScreen extends StatelessWidget {
                                 Navigator.of(context).pushNamed('/login');
                               }
                             } : null,
-                            color: primaryColor,
-                            textColor: Colors.white,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              foregroundColor: Colors.white,
+                            ),
                             child: Text(
                               usuarioAtenticacao.isLoggedIn 
                                   ? 'Adicionar ao carrinho' : 'Entre para comprar',

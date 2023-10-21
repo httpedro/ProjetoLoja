@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:libelulas/models/section.dart';
+import 'package:libelulas/screens/home/components/item_tile.dart';
 import 'package:libelulas/screens/home/components/section_header.dart';
-import 'package:libelulas/screens/home/components/item_tile.dart'
 
 
 class SectionStaggered extends StatelessWidget {
@@ -15,18 +16,18 @@ class SectionStaggered extends StatelessWidget {
         return Container(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Column(
-                crossAxisAligment: CrossAxisAligment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                     SectionHeader(section),
                     StaggeredGridView.countBuilder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         crossAxisCount: 4,
-                        itemCount: section.items.length,
+                        itemCount: section.items!.length,
                         itemBuilder: (_, index){
-                            return ItemTile(section.items[index]);
+                            return ItemTile(section.items![index]);
                         },
-                        StaggeredTileBuilder: (index) =>
+                        staggeredTileBuilder: (index) =>
                             StaggeredTile.count(2, index.isEven ? 2 : 1),
                         mainAxisSpacing: 4,
                         crossAxisSpacing: 4,

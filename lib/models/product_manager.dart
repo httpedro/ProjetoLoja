@@ -35,19 +35,18 @@ class ProductManager extends ChangeNotifier{
   }
 
   Future<void> _loadAllProducts() async {
-    final QuerySnapshot snapProducts =
-      await firestore.collection('products').getDocuments();
+    final QuerySnapshot snapProducts = await firestore.collection('products').get();
 
-    allProducts = snapProducts.docs.map(
-      (d) => Product.fromDocument(d)).toList();
+    allProducts = snapProducts.docs.map((d) => Product.fromDocument(d)).toList();
 
     notifyListeners();
   }
 
-  Product findProductById(String id){
+  Product? findProductById(String id){
     try {
       return allProducts.firstWhere((p) => p.id == id);
-  } catch (e) {
-    return null;
+    } catch (e) {
+      return null;
+    }
   }
 }

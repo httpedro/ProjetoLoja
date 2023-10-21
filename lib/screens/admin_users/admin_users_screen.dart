@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
 import 'package:libelulas/models/admin_users_manager.dart';
-import 'package:libelulas/models/user_manager.dart';
 import 'package:provider/provider.dart';
 
 class AdminUsersScreen extends StatelessWidget{
@@ -20,14 +19,14 @@ class AdminUsersScreen extends StatelessWidget{
             itemBuilder: (_, index){
               return ListTile(
                 title: Text(
-                  adminUsersManager.users[index].name,
+                  adminUsersManager.users[index].name as String,
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     color: Colors.white
                   ),
                 ),
                 subtitle: Text(
-                  adminUsersManager.users[index].email,
+                  adminUsersManager.users[index].email as String,
                   style: TextStyle(
                     color: Colors.white,
                   ),

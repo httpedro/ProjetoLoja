@@ -17,4 +17,9 @@ class ItemSize{
     return 'ItemSize{name: $name, price: $price, stock: $stock}';
   }
 
+  // Método estático para criar uma instância vazia de ItemSize
+  static ItemSize empty() {
+    return ItemSize.fromMap({'name': '', 'price': 0, 'stock': 0});
+  }
+
 }

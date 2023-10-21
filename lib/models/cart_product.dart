@@ -7,18 +7,18 @@ import 'package:libelulas/models/product.dart';
 class CartProduct extends ChangeNotifier{
 
   CartProduct.fromProduct(this.product){
-    productId = product.id;
+    productId = product!.id;
     quantity = 1;
-    size = product.selectedSize.name;
+    size = product!.selectedSize!.name;
   }
 
   CartProduct.fromDocument(DocumentSnapshot document){
-    id = document.documentID;
-    productId = document.data['pid'] as String;
-    quantity = document.data ['quantity'] as int;
-    size = document.data['size'] as String;
+    id = document.id;
+    productId = document.get('pid') as String;
+    quantity = document.get('quantity') as int;
+    size = document.get('size') as String;
 
-    firestore.document('products/$productId').get().then(
+    firestore.doc('products/$productId').get().then(
       (doc) {
         product = Product.fromDocument (doc);
         notifyListeners();
@@ -26,28 +26,28 @@ class CartProduct extends ChangeNotifier{
     );
   }
 
-  final Firestore firestore = Firestore.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  String id;
+  String? id;
 
-  String productId;
-  int quantity;
-  String size;
+  String? productId;
+  int? quantity;
+  String? size;
 
-    Product product;
+  Product? product;
 
 
-    ItemSize get itemSize{
-      if(product == null) return null;
-      return product.findSize(size);
-    }
-
-    num get unitPrice {
-      if(product == null) return 0;
-      return ItemSize?.price ?? 0;
+  ItemSize? get itemSize{
+    if(product == null) return null;
+    return product!.findSize(size as String);
   }
 
-  num get totalPrice => unitPrice * quantity;
+  num get unitPrice {
+    if(product == null) return 0;
+    return itemSize!.price ?? 0;
+  }
+
+  num get totalPrice => unitPrice * quantity!;
   
   Map<String, dynamic> toCartItemMap(){
     return {
@@ -58,23 +58,23 @@ class CartProduct extends ChangeNotifier{
   }
 
   bool stackable (Product product){
-    return product.id == productId && product.selectedSize.name == size;
+    return product.id == productId && product.selectedSize!.name == size;
   }
 
   void increment(){
-    quantity++;
+    quantity = quantity! + 1;
     notifyListeners();
   }
 
   void decrement(){
-    quantity--;
+    quantity = quantity! - 1;
     notifyListeners();
   }
 
   bool get hasStock {
-    final size = ItemSize;
+    final size = itemSize;
     if(size == null) return false;
-    return size.stock >= quantity;
+    return size.stock! >= quantity!;
   }
 
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libelulas/common/price_card.dart';
 import 'package:libelulas/models/cart_manager.dart';
 import 'package:libelulas/screens/cart/components/cart_tile.dart';
 import 'package:provider/provider.dart';

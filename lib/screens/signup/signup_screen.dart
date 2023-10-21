@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:libelulas/helpers/validators.dart";
 import "package:libelulas/models/user.dart";
-import 'package:libelulas/models/user_manager.dart';
+import "package:libelulas/models/user_manager.dart";
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {

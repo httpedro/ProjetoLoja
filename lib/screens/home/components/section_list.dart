@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libelulas/models/section.dart';
+import 'package:libelulas/screens/home/components/item_tile.dart';
 import 'package:libelulas/screens/home/components/section_header.dart';
 
 
@@ -14,7 +15,7 @@ class SectionList extends StatelessWidget {
         return Container(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Column(
-                crossAxisAligment: CrossAxisAligment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                     SectionHeader(section),
                     SizedBox(
@@ -22,10 +23,10 @@ class SectionList extends StatelessWidget {
                         child: ListView.separated(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (_, index){
-                                return ItemTile(section.items[index]);
+                                return ItemTile(section.items![index]);
                             },
                             separatorBuilder: (_, __) => const SizedBox(width: 4,),
-                            itemCount: section.items.length,
+                            itemCount: section.items!.length,
                         ), //listview separated
                     ) //SizedBox
                 ],

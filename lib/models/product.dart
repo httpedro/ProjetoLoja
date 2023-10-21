@@ -42,14 +42,15 @@ class Product extends ChangeNotifier{
   }
 
   ItemSize? findSize(String name) {
-    if (sizes == null) return null; // Verifica se sizes é nulo e retorna null em caso afirmativo.
-    
+    if (sizes == null) return null;
+
     try {
-      return sizes?.firstWhere((s) => s?.name == name, orElse: () => null);
+      return sizes?.firstWhere((s) => s.name == name, orElse: () => ItemSize.empty());
     } catch (e) {
-      return null; // Retorna nulo caso não encontre o produto, para evitar erros.
+      return null;
     }
   }
+
 
 
 }
