@@ -23,6 +23,23 @@ class ProductScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(product.name as String),
           centerTitle: true,
+          actions: <Widget>[
+            Consumer<UsuarioAtenticacao>(
+              builder: (_, usuarioAtenticacao, __){
+                if(usuarioAtenticacao.adminEnabled){
+                  return IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: (){
+                      Navigator.of(context)
+                          .pushReplacementNamed('/edit_product',arguments: product);
+                    },
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            )
+          ],
         ),
         backgroundColor: Colors.white,
         body: ListView(
@@ -68,7 +85,8 @@ class ProductScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'R\$ 19.99',
+                    'R\$ ${(product.basePrice! == double.infinity) ? 'Indisponível'
+                        : product.basePrice!.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,

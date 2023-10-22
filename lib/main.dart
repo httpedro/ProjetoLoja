@@ -7,6 +7,7 @@ import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/product_manager.dart';
 import 'package:libelulas/models/user_manager.dart';
 import 'package:libelulas/screens/base/base_screen.dart';
+import 'package:libelulas/screens/edit_product/edit_product_screen.dart';
 import 'package:libelulas/screens/login/login_screen.dart';
 import 'package:libelulas/screens/product/product_screen.dart';
 import 'package:libelulas/screens/signup/signup_screen.dart';
@@ -86,6 +87,10 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (_) => CartScreen()
               ); //material page route
+            case '/edit_product':
+              return MaterialPageRoute(
+                  builder: (_) => EditProductScreen(settings.arguments as Product)
+              );
             case '/base':
             default:
               return MaterialPageRoute(
