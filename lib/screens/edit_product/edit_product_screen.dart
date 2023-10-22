@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:libelulas/screens/edit_product/components/images_form.dart';
+import 'package:libelulas/screens/edit_product/components/sizes_form.dart';
 
 class EditProductScreen extends StatelessWidget {
   EditProductScreen(this.product);
@@ -91,6 +92,7 @@ class EditProductScreen extends StatelessWidget {
                       }
                     },
                   ),
+                  SizesForm(product),
                   ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
