@@ -58,11 +58,11 @@ class MyApp extends StatelessWidget {
         ) //ChangeNotifierProxyProvider
       ],
       child: MaterialApp(
-        title: 'Loja Libélula',
+        title: 'Loa Libélula',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.purple,
-          scaffoldBackgroundColor: const Color.fromARGB(255, 255, 87, 238),
+          scaffoldBackgroundColor: Color.fromRGBO(193, 162, 214, 0.961),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),

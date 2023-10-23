@@ -27,13 +27,15 @@ class BaseScreen extends StatelessWidget {
               Scaffold(
                 drawer: CustomDrawer(),
                 appBar: AppBar(
-                  title: const Text('Home3'),
+                  backgroundColor: Colors.transparent,
+                  title: const Text('Meus pedidos'),
                 ),
               ),
               Scaffold(
                 drawer: const CustomDrawer(),
                 appBar: AppBar(
-                  title: const Text('Home4'),
+                  backgroundColor: Colors.transparent,
+                  title: const Text('Lojas'),
                 ),
               ),
               if (userManager.adminEnabled) ...[

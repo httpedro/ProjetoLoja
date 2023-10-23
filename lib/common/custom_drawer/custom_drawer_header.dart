@@ -18,7 +18,7 @@ class CustomDrawerHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               const Text(
-                'Libelula\nStore',
+                'Libélula\nStore',
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
@@ -45,11 +45,10 @@ class CustomDrawerHeader extends StatelessWidget {
                 child: Text(
                   usuarioAtenticacao.isLoggedIn
                     ? 'Sair'
-                    : 'Entre ou cadastra-se >',
+                    : 'Entre ou cadastre-se >',
                   style: const TextStyle(
-                    color: Colors.deepPurple,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    fontSize: 16
                   ), 
                 ),
               )

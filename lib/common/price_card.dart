@@ -71,7 +71,7 @@ class PriceCard extends StatelessWidget {
                 backgroundColor: Theme.of(context).primaryColor,
                 foregroundColor: Colors.white,
               ),
-              child: Text('buttonText'),
+              child: Text('Finalizar compra'),
             ),
           ],
         ),
