@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
+import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/product_manager.dart';
+import 'package:libelulas/models/user_manager.dart';
 import 'package:libelulas/screens/products/components/product_list_tile.dart';
 import 'package:libelulas/screens/products/components/search_dialog.dart';
 import 'package:provider/provider.dart';
@@ -63,6 +65,22 @@ class ProductsScreen extends StatelessWidget {
                 );
               }
             }
+          ),
+          Consumer<UsuarioAtenticacao>(
+            builder: (_, userManager, __){
+              if(userManager.adminEnabled){
+                return IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: (){
+                    Navigator.of(context).pushNamed(
+                      '/edit_product',arguments: Product()
+                    );
+                  },
+                );
+              } else {
+                return Container();
+              }
+            },
           )
         ],
       ),

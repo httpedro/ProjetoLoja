@@ -7,12 +7,12 @@ import 'package:libelulas/screens/edit_product/components/image_source_sheet.dar
 
 class ImagesForm extends StatelessWidget {
   const ImagesForm(this.product);
-  final Product product;
+  final Product? product;
 
   @override
   Widget build(BuildContext context) {
     return FormField<List<dynamic>>(
-      initialValue: List.from(product.images as List<String>),
+      initialValue: List.from(product!.images as List<String>),
       validator: (images){
         if(images!.isEmpty){
           return 'Insira ao menos uma imagem';
@@ -20,6 +20,7 @@ class ImagesForm extends StatelessWidget {
           return null;
         }
       },
+      onSaved: (images) => product!.newImages = images,
       builder: (state) {
         void onImageSelected(File file){
           state.value!.add(file);
