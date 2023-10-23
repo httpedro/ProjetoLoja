@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      context.read<UsuarioAtenticacao>().signIn(
+                      context.read<UserManager>().signIn(
                           Usuario(email: emailController.text, password: passController.text),
                           (e) {
                         print(e);

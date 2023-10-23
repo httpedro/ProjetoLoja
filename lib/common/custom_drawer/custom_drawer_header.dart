@@ -11,8 +11,8 @@ class CustomDrawerHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(32, 24, 16, 8),
       height: 180,
-      child: Consumer<UsuarioAtenticacao>(
-        builder: (_, usuarioAtenticacao, __){
+      child: Consumer<UserManager>(
+        builder: (_, userManager, __){
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -25,7 +25,7 @@ class CustomDrawerHeader extends StatelessWidget {
                 ),
               ),
               Text(
-                'Olá, ${usuarioAtenticacao.user?.name ?? ''}',
+                'Olá, ${userManager.user?.name ?? ''}',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: const TextStyle(
@@ -35,15 +35,15 @@ class CustomDrawerHeader extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: (){
-                  if(usuarioAtenticacao.isLoggedIn){
+                  if(userManager.isLoggedIn){
                     context.read<PageManager>().setPage(0);
-                    usuarioAtenticacao.signOut();
+                    userManager.signOut();
                   } else {
                     Navigator.of(context).pushNamed('/login');
                   }
                 },
                 child: Text(
-                  usuarioAtenticacao.isLoggedIn
+                  userManager.isLoggedIn
                     ? 'Sair'
                     : 'Entre ou cadastre-se >',
                   style: const TextStyle(

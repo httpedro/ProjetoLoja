@@ -23,15 +23,15 @@ class SignUpScreen extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Form(
             key: formkey,
-            child: Consumer<UsuarioAtenticacao>(
-              builder: (_, usuarioAtenticacao, __){
+            child: Consumer<UserManager>(
+              builder: (_, userManager, __){
                 return ListView(
                   padding: const EdgeInsets.all(16),
                   shrinkWrap: true,
                   children: <Widget>[
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'Nome completo'),
-                      enabled: !usuarioAtenticacao.loading,
+                      enabled: !userManager.loading,
                       validator: (name){
                         if(name.toString().isEmpty) {
                           return 'Campo obrigatório';
@@ -42,7 +42,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'E-mail'),
-                      enabled: !usuarioAtenticacao.loading,
+                      enabled: !userManager.loading,
                       keyboardType: TextInputType.emailAddress,
                       validator: (email){
                         if(email.toString().isEmpty) {
@@ -55,7 +55,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'Senha'),
-                      enabled: !usuarioAtenticacao.loading,
+                      enabled: !userManager.loading,
                       obscureText: true,
                       validator: (pass){
                         if(pass.toString().isEmpty) {
@@ -68,7 +68,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'Repita a senha'),
-                      enabled: !usuarioAtenticacao.loading,
+                      enabled: !userManager.loading,
                       obscureText: true,
                       validator: (pass){
                         if(pass.toString().isEmpty) {
@@ -83,7 +83,7 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(
                       height: 44,
                       child: ElevatedButton(
-                        onPressed: usuarioAtenticacao.loading ? null : (){
+                        onPressed: userManager.loading ? null : (){
                           if(formkey.currentState!.validate()){
                             formkey.currentState!.save();
 
@@ -96,7 +96,7 @@ class SignUpScreen extends StatelessWidget {
                             }
 
                             else{
-                              usuarioAtenticacao.signUp(
+                              userManager.signUp(
                                 user, 
                                 (e){
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -113,7 +113,7 @@ class SignUpScreen extends StatelessWidget {
                             }
                           }
                         },
-                        child: usuarioAtenticacao.loading ? const CircularProgressIndicator(
+                        child: userManager.loading ? const CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation(Colors.white),
                         )
                         : const Text('Criar Conta'),

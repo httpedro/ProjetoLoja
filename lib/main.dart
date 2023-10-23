@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:libelulas/models/admin_users_manager.dart';
 import 'package:libelulas/models/cart_manager.dart';
-import 'package:libelulas/models/home.manager.dart';
+import 'package:libelulas/models/home_manager.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/product_manager.dart';
 import 'package:libelulas/models/user_manager.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => UsuarioAtenticacao(),
+          create: (_) => UserManager(),
           lazy: false,
         ), //ChangeNotifierProvider
         ChangeNotifierProvider(
@@ -44,13 +44,13 @@ class MyApp extends StatelessWidget {
           create: (_) => HomeManager(),
           lazy: false,
         ),
-        ChangeNotifierProxyProvider<UsuarioAtenticacao, CartManager>(
+        ChangeNotifierProxyProvider<UserManager, CartManager>(
           create: (_) => CartManager(),
           lazy: false,
-          update: (_, usuarioAtenticacao, cartManager) =>
-            cartManager!..updateUser(usuarioAtenticacao),
+          update: (_, userManager, cartManager) =>
+            cartManager!..updateUser(userManager),
         ),
-        ChangeNotifierProxyProvider<UsuarioAtenticacao, AdminUsersManager>(
+        ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
           create: (_) => AdminUsersManager(),
           lazy: false,
           update: (_, userManager, adminUsersManager) =>
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         ) //ChangeNotifierProxyProvider
       ],
       child: MaterialApp(
-        title: 'Loa Libélula',
+        title: 'Loja Libélula',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.purple,

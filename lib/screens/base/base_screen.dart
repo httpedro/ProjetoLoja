@@ -16,7 +16,7 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => PageManager(pageController),
-      child: Consumer<UsuarioAtenticacao>(
+      child: Consumer<UserManager>(
         builder: (_, userManager, __) {
           return PageView(
             controller: pageController,
