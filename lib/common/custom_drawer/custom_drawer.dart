@@ -15,7 +15,10 @@ class CustomDrawer extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
               gradient: LinearGradient(
-            colors: [Color.fromRGBO(209, 73, 180, 0.961), Color.fromRGBO(193, 162, 214, 0.961)],
+            colors: [
+              Color.fromARGB(255, 241, 188, 178),
+              Colors.white,
+              ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           )),
@@ -44,7 +47,7 @@ class CustomDrawer extends StatelessWidget {
               title: 'Lojas',
               page: 3,
             ),
-            Consumer<UserManager>(
+            Consumer<UsuarioAtenticacao>(
               builder: (_, userManager, __) {
                 if (userManager.adminEnabled) {
                   return Column(

@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:libelulas/models/home_manager.dart';
-import 'package:libelulas/models/home_manager.dart';
+import 'package:libelulas/models/home.manager.dart';
 import 'package:libelulas/models/section.dart';
 
-
 class AddSectionWidget extends StatelessWidget {
-    
-    const AddSectionWidget(this,HomeManager);
 
-    final HomeManager homeManager;
+  const AddSectionWidget(this.homeManager);
 
+  final HomeManager homeManager;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         Expanded(
-          child: FlatButton(
+          child: ElevatedButton(
             onPressed: (){
               homeManager.addSection(Section(type: 'List'));
-
             },
-            textColor: Colors.white,
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.transparent
+            ),
             child: const Text('Adicionar Lista'),
           ),
         ),
         Expanded(
-          child: FlatButton(
+          child: ElevatedButton(
             onPressed: (){
               homeManager.addSection(Section(type: 'Staggered'));
             },
-            textColor: Colors.white,
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.transparent
+            ),
             child: const Text('Adicionar Grade'),
           ),
         ),

@@ -24,9 +24,9 @@ class ProductScreen extends StatelessWidget {
           title: Text(product.name as String),
           centerTitle: true,
           actions: <Widget>[
-            Consumer<UserManager>(
-              builder: (_, userManager, __){
-                if(userManager.adminEnabled){
+            Consumer<UsuarioAtenticacao>(
+              builder: (_, usuarioAtenticacao, __){
+                if(usuarioAtenticacao.adminEnabled){
                   return IconButton(
                     icon: const Icon(Icons.edit),
                     onPressed: (){
@@ -130,13 +130,13 @@ class ProductScreen extends StatelessWidget {
                     height: 20,
                   ),
                   if(product.hasStock)
-                    Consumer2<UserManager, Product>(
-                      builder: (_, userManager, product, __){
+                    Consumer2<UsuarioAtenticacao, Product>(
+                      builder: (_, usuarioAtenticacao, product, __){
                         return SizedBox(
                           height: 44,
                           child: ElevatedButton(
                             onPressed: product.selectedSize != null ? (){
-                              if(userManager.isLoggedIn){
+                              if(usuarioAtenticacao.isLoggedIn){
                                 context.read<CartManager>().addToCart(product);
                                 Navigator.of(context).pushNamed('/cart');
                               } else {
@@ -148,7 +148,7 @@ class ProductScreen extends StatelessWidget {
                               foregroundColor: Colors.white,
                             ),
                             child: Text(
-                              userManager.isLoggedIn 
+                              usuarioAtenticacao.isLoggedIn 
                                   ? 'Adicionar ao carrinho' : 'Entre para comprar',
                               style: const TextStyle(fontSize: 18),
                             ),

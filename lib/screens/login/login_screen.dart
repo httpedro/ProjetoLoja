@@ -17,17 +17,26 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       key: skaffoldKey,
       appBar: AppBar(
-        title: const Text("Entrar"),
+        title: const Text("Fazer login"),
+        backgroundColor: Colors.transparent, //cabeçalho
         centerTitle: true,
         actions: <Widget>[
-          TextButton(
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20.0), // Adicione margens horizontais para criar espaço
+            child: TextButton(
             onPressed: (){
               Navigator.of(context).pushReplacementNamed('/signup');
             },
+            style: TextButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 228, 167, 163),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15), // Ajuste o valor para definir o espaço lateral desejado
+ // Cor do botão "Criar Conta"
+            ),
             child: const Text(
               "CRIAR CONTA",
               style: TextStyle(fontSize: 18, color: Colors.black),
-            )
+            ),
+          ),
           )
         ],
       ),
@@ -46,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     validator: (email) {
-                      if (!emailValid(email!)) return 'email invalido';
+                      if (!emailValid(email!)) return 'E-mail inválido';
                       return null;
                     }),
                 TextFormField(
@@ -56,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                   obscureText: true,
                   validator: (pass) {
                     if (pass!.isEmpty || pass.length < 6) {
-                      return 'senha invalida';
+                      return 'Senha invalida';
                     }
                     return null;
                   },
@@ -65,12 +74,12 @@ class LoginScreen extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                       onPressed: () {},
-                      child: const Text("esqueci minha senha")),
+                      child: const Text("Esqueci minha senha")),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      context.read<UserManager>().signIn(
+                      context.read<UsuarioAtenticacao>().signIn(
                           Usuario(email: emailController.text, password: passController.text),
                           (e) {
                         print(e);
@@ -80,6 +89,9 @@ class LoginScreen extends StatelessWidget {
                       });
                     }
                   },
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 229, 144, 138), // Cor do botão "Entrar"
+                  ),
                   child: const Text("Entrar"),
                 ),
               ],

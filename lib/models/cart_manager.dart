@@ -14,7 +14,7 @@ class CartManager extends ChangeNotifier {
 
   num productsPrice = 0.0;
 
-  void updateUser(UserManager userManager){
+  void updateUser(UsuarioAtenticacao userManager){
     user = userManager.user;
     items.clear();
 

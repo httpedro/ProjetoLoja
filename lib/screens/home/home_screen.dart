@@ -1,10 +1,9 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
-import 'package:libelulas/models/home_manager.dart';
+import 'package:libelulas/models/home.manager.dart';
 import 'package:libelulas/models/user_manager.dart';
 import 'package:libelulas/screens/home/components/add_section_widget.dart';
+
 import 'package:libelulas/screens/home/components/section_list.dart';
 import 'package:libelulas/screens/home/components/section_staggered.dart';
 import 'package:provider/provider.dart';
@@ -20,8 +19,8 @@ class HomeScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: const [
-                  Color.fromRGBO(209, 73, 180, 0.961), 
-                  Color.fromRGBO(193, 162, 214, 0.961)
+                  Color.fromARGB(255, 211, 118, 130),
+                  Color.fromARGB(255, 253, 181, 168)
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter
@@ -34,9 +33,9 @@ class HomeScreen extends StatelessWidget {
                 snap: true,
                 floating: true,
                 elevation: 0,
-                backgroundColor: Colors.transparent,
+                backgroundColor: Colors.transparent, //cabeçalho
                 flexibleSpace: const FlexibleSpaceBar(
-                  title: Text('Libelula'),
+                  title: Text('Libélula'),
                   centerTitle: true,
                 ),
                 actions: <Widget>[
@@ -45,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.white,
                     onPressed: () => Navigator.of(context).pushNamed('/cart'),
                   ),
-                  Consumer2<UserManager, HomeManager>(
+                  Consumer2<UsuarioAtenticacao, HomeManager>(
                     builder: (_, userManager, homeManager, __){
                       if(userManager.adminEnabled && !homeManager.loading) {
                         if(homeManager.editing){
@@ -66,20 +65,27 @@ class HomeScreen extends StatelessWidget {
                               }).toList();
                             },
                           );
-                          
                         } else {
                           return IconButton(
-                          icon: Icon(Icons.edit),
-                          onPressed: HomeManager.enterEditing,
-                        ); 
-                      }
-                    } else return Container();
-                  },
+                            icon: Icon(Icons.edit),
+                            onPressed: homeManager.enterEditing,
+                          );
+                        }
+                      } else return Container();
+                    },
                   ),
                 ],
               ),
               Consumer<HomeManager>(
                 builder: (_, homeManager, __){
+                  if(homeManager.loading){
+                    return const SliverToBoxAdapter(
+                      child: LinearProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.white),
+                        backgroundColor: Colors.transparent,
+                      ),
+                    );
+                  }
                   final List<Widget> children = homeManager.sections.map<Widget>(
                     (section) {
                       switch(section.type){
@@ -93,8 +99,9 @@ class HomeScreen extends StatelessWidget {
                     }
                   ).toList();
 
-                  if(homeManager.editing)
+                  if(homeManager.editing){
                     children.add(AddSectionWidget(homeManager));
+                  }
 
                   return SliverList(
                     delegate: SliverChildListDelegate(children),

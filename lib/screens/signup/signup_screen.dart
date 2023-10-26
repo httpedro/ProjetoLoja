@@ -16,6 +16,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Criar conta'),
+        backgroundColor: Colors.transparent, //cabeçalho
         centerTitle: true,
       ),
       body: Center(
@@ -23,15 +24,15 @@ class SignUpScreen extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Form(
             key: formkey,
-            child: Consumer<UserManager>(
-              builder: (_, userManager, __){
+            child: Consumer<UsuarioAtenticacao>(
+              builder: (_, usuarioAtenticacao, __){
                 return ListView(
                   padding: const EdgeInsets.all(16),
                   shrinkWrap: true,
                   children: <Widget>[
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'Nome completo'),
-                      enabled: !userManager.loading,
+                      enabled: !usuarioAtenticacao.loading,
                       validator: (name){
                         if(name.toString().isEmpty) {
                           return 'Campo obrigatório';
@@ -42,7 +43,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'E-mail'),
-                      enabled: !userManager.loading,
+                      enabled: !usuarioAtenticacao.loading,
                       keyboardType: TextInputType.emailAddress,
                       validator: (email){
                         if(email.toString().isEmpty) {
@@ -55,7 +56,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'Senha'),
-                      enabled: !userManager.loading,
+                      enabled: !usuarioAtenticacao.loading,
                       obscureText: true,
                       validator: (pass){
                         if(pass.toString().isEmpty) {
@@ -68,7 +69,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(hintText: 'Repita a senha'),
-                      enabled: !userManager.loading,
+                      enabled: !usuarioAtenticacao.loading,
                       obscureText: true,
                       validator: (pass){
                         if(pass.toString().isEmpty) {
@@ -83,7 +84,7 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(
                       height: 44,
                       child: ElevatedButton(
-                        onPressed: userManager.loading ? null : (){
+                        onPressed: usuarioAtenticacao.loading ? null : (){
                           if(formkey.currentState!.validate()){
                             formkey.currentState!.save();
 
@@ -96,7 +97,7 @@ class SignUpScreen extends StatelessWidget {
                             }
 
                             else{
-                              userManager.signUp(
+                              usuarioAtenticacao.signUp(
                                 user, 
                                 (e){
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -113,7 +114,7 @@ class SignUpScreen extends StatelessWidget {
                             }
                           }
                         },
-                        child: userManager.loading ? const CircularProgressIndicator(
+                        child: usuarioAtenticacao.loading ? const CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation(Colors.white),
                         )
                         : const Text('Criar Conta'),

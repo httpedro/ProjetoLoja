@@ -37,7 +37,7 @@ class PriceCard extends StatelessWidget {
                 const Text('Subtotal'),
                 Text('R\$ ${productsPrice.toStringAsFixed(2)}',
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: Colors.green,
                       fontSize: 16,
                     )),
               ],
@@ -56,7 +56,7 @@ class PriceCard extends StatelessWidget {
                 Text(
                   'R\$ ${productsPrice.toStringAsFixed(2)}',
                   style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.green,
                     fontSize: 16,
                   ),
                 )
@@ -68,7 +68,7 @@ class PriceCard extends StatelessWidget {
             ElevatedButton(
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).primaryColor,
+                backgroundColor: Color.fromARGB(255, 211, 118, 130),
                 foregroundColor: Colors.white,
               ),
               child: Text('Finalizar compra'),

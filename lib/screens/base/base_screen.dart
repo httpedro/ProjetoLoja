@@ -16,7 +16,7 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => PageManager(pageController),
-      child: Consumer<UserManager>(
+      child: Consumer<UsuarioAtenticacao>(
         builder: (_, userManager, __) {
           return PageView(
             controller: pageController,
@@ -29,6 +29,8 @@ class BaseScreen extends StatelessWidget {
                 appBar: AppBar(
                   backgroundColor: Colors.transparent,
                   title: const Text('Meus pedidos'),
+                  centerTitle: true,
+
                 ),
               ),
               Scaffold(
@@ -36,6 +38,8 @@ class BaseScreen extends StatelessWidget {
                 appBar: AppBar(
                   backgroundColor: Colors.transparent,
                   title: const Text('Lojas'),
+                  centerTitle: true,
+
                 ),
               ),
               if (userManager.adminEnabled) ...[
@@ -43,7 +47,10 @@ class BaseScreen extends StatelessWidget {
                 Scaffold(
                   drawer: CustomDrawer(),
                   appBar: AppBar(
+                    backgroundColor: Colors.transparent,
                     title: const Text('Pedidos'),
+                    centerTitle: true,
+
                   ),
                 ),
               ]

@@ -12,7 +12,7 @@ final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 StreamSubscription? _subscription;
 
-  void updateUser(UserManager? userManager) {  // Adicione '?' para tornar userManager opcional
+  void updateUser(UsuarioAtenticacao? userManager) {  // Adicione '?' para tornar userManager opcional
     _subscription?.cancel();  // Use '?' para cancelar se _subscription não for nulo
     if (userManager != null && userManager.adminEnabled) {  // Verifique se userManager não é nulo
       _listenToUsers();

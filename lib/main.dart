@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:libelulas/models/admin_users_manager.dart';
 import 'package:libelulas/models/cart_manager.dart';
-import 'package:libelulas/models/home_manager.dart';
+import 'package:libelulas/models/home.manager.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/product_manager.dart';
 import 'package:libelulas/models/user_manager.dart';
@@ -10,6 +10,7 @@ import 'package:libelulas/screens/base/base_screen.dart';
 import 'package:libelulas/screens/edit_product/edit_product_screen.dart';
 import 'package:libelulas/screens/login/login_screen.dart';
 import 'package:libelulas/screens/product/product_screen.dart';
+import 'package:libelulas/screens/select_product/select_product_screen.dart';
 import 'package:libelulas/screens/signup/signup_screen.dart';
 import 'package:libelulas/screens/cart/cart_screen.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => UserManager(),
+          create: (_) => UsuarioAtenticacao(),
           lazy: false,
         ), //ChangeNotifierProvider
         ChangeNotifierProvider(
@@ -44,13 +45,13 @@ class MyApp extends StatelessWidget {
           create: (_) => HomeManager(),
           lazy: false,
         ),
-        ChangeNotifierProxyProvider<UserManager, CartManager>(
+        ChangeNotifierProxyProvider<UsuarioAtenticacao, CartManager>(
           create: (_) => CartManager(),
           lazy: false,
-          update: (_, userManager, cartManager) =>
-            cartManager!..updateUser(userManager),
+          update: (_, usuarioAtenticacao, cartManager) =>
+            cartManager!..updateUser(usuarioAtenticacao),
         ),
-        ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
+        ChangeNotifierProxyProvider<UsuarioAtenticacao, AdminUsersManager>(
           create: (_) => AdminUsersManager(),
           lazy: false,
           update: (_, userManager, adminUsersManager) =>
@@ -61,8 +62,8 @@ class MyApp extends StatelessWidget {
         title: 'Loja Libélula',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.purple,
-          scaffoldBackgroundColor: Color.fromRGBO(193, 162, 214, 0.961),
+          primaryColor: const Color.fromARGB(255, 211, 118, 130),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 211, 118, 130),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
@@ -90,6 +91,10 @@ class MyApp extends StatelessWidget {
             case '/edit_product':
               return MaterialPageRoute(
                   builder: (_) => EditProductScreen(settings.arguments as Product)
+              );
+            case '/select_product':
+              return MaterialPageRoute(
+                  builder: (_) => SelectProductScreen()
               );
             case '/base':
             default:

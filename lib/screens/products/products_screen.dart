@@ -67,7 +67,7 @@ class ProductsScreen extends StatelessWidget {
               }
             }
           ),
-          Consumer<UserManager>(
+          Consumer<UsuarioAtenticacao>(
             builder: (_, userManager, __){
               if(userManager.adminEnabled){
                 return IconButton(

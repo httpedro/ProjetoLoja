@@ -6,9 +6,9 @@ import 'package:libelulas/helpers/firebase_erros.dart';
 import 'package:libelulas/models/user.dart';
 
 
-class UserManager extends ChangeNotifier {
+class UsuarioAtenticacao extends ChangeNotifier {
 
-  UserManager(){
+  UsuarioAtenticacao(){
     _loadCurrentUser();
   }
 

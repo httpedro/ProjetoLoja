@@ -1,26 +1,31 @@
 class SectionItem {
 
-    SectionItem({this.image, this.product});
+  SectionItem({this.image, this.product});
 
   SectionItem.fromMap(Map<String, dynamic> map){
-    image = map['image'] as String;
-    product = map['product'] as String;
+    image = map['image'] as String?;
+    product = map['product'] as String?;
   }
 
-  String? image;
+  dynamic image;
   String? product;
-
 
   SectionItem clone(){
     return SectionItem(
-      name: name,
-      type: type,
-      items: items?.map(e) => e.clone()).toList() ?? [],
+      image: image,
+      product: product,
     );
+  }
+
+  Map<String, dynamic> toMap(){
+    return {
+      'image': image,
+      'product': product,
+    };
   }
 
   @override
   String toString() {
-    return 'Section{name: $name, type: $type, items: $items}';
+    return 'SectionItem{image: $image, product: $product}';
   }
 }
