@@ -14,22 +14,23 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Consumer<CartManager>(
-        builder: (_, cartManager, __){
+        builder: (_, cartManager, __) {
           return ListView(
             children: <Widget>[
               Column(
-                children: cartManager.items.map(
-                        (cartProduct) => CartTitle(cartProduct)
-                ).toList(),
+                children: cartManager.items
+                    .map((cartProduct) => CartTitle(cartProduct))
+                    .toList(),
               ), //Column
               PriceCard(
-                buttonText: 'Continuar para entrega',
-                onPressed: cartManager.isCartValid ? (){
-
-                } : null,
+                onPressed: cartManager.isCartValid
+                    ? () {
+                        Navigator.of(context).pushNamed("/checkout");
+                      }
+                    : null,
               ),
             ],
-          ); 
+          );
         },
       ), // Consumer
     ); // Scarfold

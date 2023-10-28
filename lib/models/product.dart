@@ -6,19 +6,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:libelulas/models/item_size.dart';
 import 'package:uuid/uuid.dart';
 
-class Product extends ChangeNotifier{
-
-  Product({this.id, this.name, this.description, this.images, this.sizes}){
-   images = images ?? [];
-   sizes = sizes ?? [];
+class Product extends ChangeNotifier {
+  Product({this.id, this.name, this.description, this.images, this.sizes}) {
+    images = images ?? [];
+    sizes = sizes ?? [];
   }
 
-  Product.fromDocument(DocumentSnapshot document){
+  Product.fromDocument(DocumentSnapshot document) {
     id = document.id;
     name = document.get('name') as String;
     description = document.get('description') as String;
     images = List<String>.from(document.get('images') as List<dynamic>);
-    sizes = (document.get('sizes') as List<dynamic>? ?? []).map((s) => ItemSize.fromMap(s as Map<String, dynamic>)).toList();
+    sizes = (document.get('sizes') as List<dynamic>? ?? [])
+        .map((s) => ItemSize.fromMap(s as Map<String, dynamic>))
+        .toList();
   }
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -37,7 +38,7 @@ class Product extends ChangeNotifier{
 
   bool _loading = false;
   bool get loading => _loading;
-  set loading(bool value){
+  set loading(bool value) {
     _loading = value;
     notifyListeners();
   }
@@ -53,7 +54,7 @@ class Product extends ChangeNotifier{
 
   int? get totalStock {
     int stock = 0;
-    for(final size in sizes!){
+    for (final size in sizes!) {
       stock += size.stock as int;
     }
     return stock;
@@ -65,8 +66,8 @@ class Product extends ChangeNotifier{
 
   num? get basePrice {
     num lowest = double.infinity;
-    for(final size in sizes!){
-      if(size.price! < lowest && size.hasStock){
+    for (final size in sizes!) {
+      if (size.price! < lowest && size.hasStock) {
         lowest = size.price as num;
       }
     }
@@ -77,13 +78,14 @@ class Product extends ChangeNotifier{
     if (sizes == null) return null;
 
     try {
-      return sizes?.firstWhere((s) => s.name == name, orElse: () => ItemSize.empty());
+      return sizes?.firstWhere((s) => s.name == name,
+          orElse: () => ItemSize.empty());
     } catch (e) {
       return null;
     }
   }
 
-  List<Map<String, dynamic>> exportSizeList(){
+  List<Map<String, dynamic>> exportSizeList() {
     return sizes!.map((size) => size.toMap()).toList();
   }
 
@@ -96,7 +98,7 @@ class Product extends ChangeNotifier{
       'sizes': exportSizeList(),
     };
 
-    if(id == null){
+    if (id == null) {
       final doc = await firestore.collection('products').add(data);
       id = doc.id;
     } else {
@@ -125,19 +127,20 @@ class Product extends ChangeNotifier{
       if (images!.contains(newImage)) {
         updateImages.add(newImage as String);
       } else {
-        final UploadTask task = storageRef.child(const Uuid().v1()).putFile(newImage as File);
+        final UploadTask task =
+            storageRef.child(const Uuid().v1()).putFile(newImage as File);
         final TaskSnapshot snapshot = await task;
         final String url = await snapshot.ref.getDownloadURL();
         updateImages.add(url);
       }
     }
 
-    for(final image in images!){
-      if(!newImages!.contains(image)){
+    for (final image in images!) {
+      if (!newImages!.contains(image)) {
         try {
           final ref = await storage.refFromURL(image);
           await ref.delete();
-        } catch (e){
+        } catch (e) {
           debugPrint('Falha ao deletar $image');
         }
       }
@@ -147,7 +150,7 @@ class Product extends ChangeNotifier{
     loading = false;
   }
 
-  Product clone(){
+  Product clone() {
     return Product(
       id: id,
       name: name,
@@ -158,8 +161,7 @@ class Product extends ChangeNotifier{
   }
 
   @override
-  String toString(){
+  String toString() {
     return 'Product{id: $id, name: $name, description: $description, images: $images, sizes: $sizes, newImages: $newImages}';
   }
-
 }

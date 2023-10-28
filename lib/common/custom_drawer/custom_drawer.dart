@@ -18,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
             colors: [
               Color.fromARGB(255, 241, 188, 178),
               Colors.white,
-              ],
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           )),
@@ -37,16 +37,16 @@ class CustomDrawer extends StatelessWidget {
               title: 'Produtos',
               page: 1,
             ),
-            DrawerTile(
+            /*DrawerTile(
               iconData: Icons.playlist_add_check,
               title: 'Meus Pedidos',
               page: 2,
-            ),
-            DrawerTile(
+            ),*/
+            /*DrawerTile(
               iconData: Icons.location_on,
               title: 'Lojas',
               page: 3,
-            ),
+            )*/
             Consumer<UsuarioAtenticacao>(
               builder: (_, userManager, __) {
                 if (userManager.adminEnabled) {
