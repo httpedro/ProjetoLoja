@@ -3,27 +3,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:libelulas/models/item_size.dart';
 import 'package:libelulas/models/product.dart';
 
-
-class CartProduct extends ChangeNotifier{
-
-  CartProduct.fromProduct(this.product){
+class CartProduct extends ChangeNotifier {
+  CartProduct.fromProduct(this.product) {
     productId = product!.id;
     quantity = 1;
     size = product!.selectedSize!.name;
   }
 
-  CartProduct.fromDocument(DocumentSnapshot document){
+  CartProduct.fromDocument(DocumentSnapshot document) {
     id = document.id;
     productId = document.get('pid') as String;
     quantity = document.get('quantity') as int;
     size = document.get('size') as String;
 
-    firestore.doc('products/$productId').get().then(
-      (doc) {
-        product = Product.fromDocument (doc);
-        notifyListeners();
-      }
-    );
+    firestore.doc('products/$productId').get().then((doc) {
+      product = Product.fromDocument(doc);
+      notifyListeners();
+    });
   }
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -36,20 +32,19 @@ class CartProduct extends ChangeNotifier{
 
   Product? product;
 
-
-  ItemSize? get itemSize{
-    if(product == null) return null;
+  ItemSize? get itemSize {
+    if (product == null) return null;
     return product!.findSize(size as String);
   }
 
   num get unitPrice {
-    if(product == null) return 0;
+    if (product == null) return 0;
     return itemSize!.price ?? 0;
   }
 
   num get totalPrice => unitPrice * quantity!;
-  
-  Map<String, dynamic> toCartItemMap(){
+
+  Map<String, dynamic> toCartItemMap() {
     return {
       'pid': productId,
       'quantity': quantity,
@@ -57,24 +52,23 @@ class CartProduct extends ChangeNotifier{
     };
   }
 
-  bool stackable (Product product){
+  bool stackable(Product product) {
     return product.id == productId && product.selectedSize!.name == size;
   }
 
-  void increment(){
+  void increment() {
     quantity = quantity! + 1;
     notifyListeners();
   }
 
-  void decrement(){
+  void decrement() {
     quantity = quantity! - 1;
     notifyListeners();
   }
 
   bool get hasStock {
     final size = itemSize;
-    if(size == null) return false;
+    if (size == null) return false;
     return size.stock! >= quantity!;
   }
-
 }

@@ -74,7 +74,7 @@ class Product extends ChangeNotifier {
     return lowest;
   }
 
-  ItemSize? findSize(String name) {
+  ItemSize? findSize(name) {
     if (sizes == null) return null;
 
     try {

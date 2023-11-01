@@ -15,11 +15,11 @@ class CheckoutModel extends ChangeNotifier {
   }
 
   Future<void> checkout() async {
-    /*try {
+    try {
       __decrementStock();
     } catch (e) {
       debugPrint(e.toString());
-    }*/
+    }
     _getOrderId().then((value) => print(value));
   }
 
@@ -41,9 +41,8 @@ class CheckoutModel extends ChangeNotifier {
     }
   }
 
-  //Future<void>
-  __decrementStock() {
-    /*final List<Product> productsToUpdate = [];
+  Future<void> __decrementStock() {
+    final List<Product> productsToUpdate = [];
     final List<Product> productsWithoutStock = [];
 
     return FirebaseFirestore.instance.runTransaction((tx) async {
@@ -52,9 +51,9 @@ class CheckoutModel extends ChangeNotifier {
             .doc('products/${cartProduct.productId}'));
 
         final product = Product.fromDocument(doc);
-        final size = product.findSize(cartProduct.itemSize as String);
+        final size = product.findSize(cartProduct.itemSize);
 
-        if (size!.stock! - (cartProduct.quantity as int) < 0) {
+        if (size!.stock! - (cartProduct.quantity as int) > 0) {
           productsWithoutStock.add(product);
         } else {
           size.stock = -(cartProduct.quantity as int);
@@ -74,6 +73,5 @@ class CheckoutModel extends ChangeNotifier {
             {'sizes': product.exportSizeList()});
       }
     });
-  }*/
   }
 }
