@@ -53,6 +53,14 @@ class CartManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  void get clear {
+    for (final cartProduct in items) {
+      user?.cartReference.doc(cartProduct.id).delete();
+    }
+    items.clear();
+    notifyListeners();
+  }
+
   void _onItemUpdated() {
     productsPrice = 0.0;
 
@@ -86,5 +94,13 @@ class CartManager extends ChangeNotifier {
       if (!cartProduct.hasStock) return false;
     }
     return true;
+  }
+
+  void clean() {
+    for (final cartProduct in items) {
+      user?.cartReference.doc(cartProduct.id).delete();
+    }
+    items.clear();
+    notifyListeners();
   }
 }

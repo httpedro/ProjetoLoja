@@ -1,4 +1,4 @@
-#Thu Oct 26 15:46:52 BRT 2023
+#Wed Nov 01 16:20:58 BRT 2023
 base.0=C\:\\Users\\pedri\\Music\\llll\\ProjetoLoja\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 base.1=C\:\\Users\\pedri\\Music\\llll\\ProjetoLoja\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
 base.2=C\:\\Users\\pedri\\Music\\llll\\ProjetoLoja\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex

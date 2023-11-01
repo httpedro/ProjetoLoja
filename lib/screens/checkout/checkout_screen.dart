@@ -26,6 +26,7 @@ class checkoutScreen extends StatelessWidget {
                   buttonText: "finalizar pedido",
                   onPressed: () {
                     CheckoutModel.checkout();
+                    Navigator.of(context).pushNamed("/sucess");
                   },
                 )
               ],

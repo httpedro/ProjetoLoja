@@ -4,72 +4,81 @@ import 'package:libelulas/models/cart_manager.dart';
 import 'package:libelulas/models/product.dart';
 
 class CheckoutModel extends ChangeNotifier {
-  late CartManager cartManager;
+  CartManager? cartManager;
 
-  get result => null;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+  // ignore: use_setters_to_change_properties
   void updateCart(CartManager cartManager) {
     this.cartManager = cartManager;
-
-    print(cartManager.productsPrice);
   }
 
   Future<void> checkout() async {
     try {
-      __decrementStock();
+      await _decrementStock();
     } catch (e) {
       debugPrint(e.toString());
     }
+
     _getOrderId().then((value) => print(value));
+    cartManager?.clean();
   }
 
   Future<int> _getOrderId() async {
-    final ref = FirebaseFirestore.instance.doc('aux/ordercounter');
+    final ref = firestore.doc('aux/ordercounter');
+
     try {
-      final result = await FirebaseFirestore.instance.runTransaction(
-        (tx) async {
-          final doc = await tx.get(ref);
-          var datab = doc.data();
-          var orderId = datab!['current'] as int;
-          await tx.update(ref, {'current': orderId + 1});
-          return {'orderId': orderId};
-        },
-      );
+      final result = await firestore.runTransaction((tx) async {
+        final doc = await tx.get(ref);
+        final orderId = doc.data()!['current']
+            as int; // Chame data() em doc para obter o mapa
+        await tx.update(ref, {'current': orderId + 1});
+        return {'orderId': orderId};
+      });
+
+      // Chame a função e acesse o índice
       return result['orderId'] as int;
     } catch (e) {
-      return Future.error("falha ao gerar numero do pedido");
+      debugPrint(e.toString());
+      return Future.error('Falha ao gerar número do pedido');
     }
   }
 
-  Future<void> __decrementStock() {
-    final List<Product> productsToUpdate = [];
-    final List<Product> productsWithoutStock = [];
+  Future<void> _decrementStock() {
+    return firestore.runTransaction((tx) async {
+      final List<Product> productsToUpdate = [];
+      final List<Product> productsWithoutStock = [];
 
-    return FirebaseFirestore.instance.runTransaction((tx) async {
-      for (var cartProduct in cartManager.items) {
-        final doc = await tx.get(FirebaseFirestore.instance
-            .doc('products/${cartProduct.productId}'));
+      for (final cartProduct in cartManager!.items) {
+        Product product;
 
-        final product = Product.fromDocument(doc);
-        final size = product.findSize(cartProduct.itemSize);
-
-        if (size!.stock! - (cartProduct.quantity as int) > 0) {
-          productsWithoutStock.add(product);
+        if (productsToUpdate.any((p) => p.id == cartProduct.productId)) {
+          product =
+              productsToUpdate.firstWhere((p) => p.id == cartProduct.productId);
         } else {
-          size.stock = -(cartProduct.quantity as int);
-          productsToUpdate.add(product);
+          final doc =
+              await tx.get(firestore.doc('products/${cartProduct.productId}'));
+          product = Product.fromDocument(doc);
         }
 
-        productsToUpdate.add(product);
+        cartProduct.product = product;
+
+        final size = product.findSize(cartProduct.size);
+        if (size!.stock! - (cartProduct.quantity as int) < 0) {
+          productsWithoutStock.add(product);
+        } else {
+          size.stock = size.stock! - (cartProduct.quantity as int);
+          productsToUpdate.add(product);
+        }
       }
 
       if (productsWithoutStock.isNotEmpty) {
         return Future.error(
-            "${productsWithoutStock.length} produtos sem estoque");
+            '${productsWithoutStock.length} produtos sem estoque');
       }
 
       for (final product in productsToUpdate) {
-        tx.update(FirebaseFirestore.instance.doc('products/${product.id}'),
+        tx.update(firestore.doc('products/${product.id}'),
             {'sizes': product.exportSizeList()});
       }
     });

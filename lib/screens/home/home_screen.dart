@@ -17,15 +17,10 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: const [
-                  Color.fromARGB(255, 211, 118, 130),
-                  Color.fromARGB(255, 253, 181, 168)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter
-              )
-            ),
+                gradient: LinearGradient(colors: const [
+              Color.fromARGB(255, 211, 118, 130),
+              Color.fromARGB(255, 253, 181, 168)
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           ),
           CustomScrollView(
             slivers: <Widget>[
@@ -45,19 +40,19 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () => Navigator.of(context).pushNamed('/cart'),
                   ),
                   Consumer2<UsuarioAtenticacao, HomeManager>(
-                    builder: (_, userManager, homeManager, __){
-                      if(userManager.adminEnabled && !homeManager.loading) {
-                        if(homeManager.editing){
+                    builder: (_, userManager, homeManager, __) {
+                      if (userManager.adminEnabled && !homeManager.loading) {
+                        if (homeManager.editing) {
                           return PopupMenuButton(
-                            onSelected: (e){
-                              if(e == 'Salvar'){
+                            onSelected: (e) {
+                              if (e == 'Salvar') {
                                 homeManager.saveEditing();
                               } else {
                                 homeManager.discardEditing();
                               }
                             },
-                            itemBuilder: (_){
-                              return ['Salvar', 'Descartar'].map((e){
+                            itemBuilder: (_) {
+                              return ['Salvar', 'Descartar'].map((e) {
                                 return PopupMenuItem(
                                   value: e,
                                   child: Text(e),
@@ -71,14 +66,15 @@ class HomeScreen extends StatelessWidget {
                             onPressed: homeManager.enterEditing,
                           );
                         }
-                      } else return Container();
+                      } else
+                        return Container();
                     },
                   ),
                 ],
               ),
               Consumer<HomeManager>(
-                builder: (_, homeManager, __){
-                  if(homeManager.loading){
+                builder: (_, homeManager, __) {
+                  if (homeManager.loading) {
                     return const SliverToBoxAdapter(
                       child: LinearProgressIndicator(
                         valueColor: AlwaysStoppedAnimation(Colors.white),
@@ -86,20 +82,19 @@ class HomeScreen extends StatelessWidget {
                       ),
                     );
                   }
-                  final List<Widget> children = homeManager.sections.map<Widget>(
-                    (section) {
-                      switch(section.type){
-                        case 'List':
-                          return SectionList(section);
-                        case 'Staggered':
-                          return SectionStaggered(section);
-                        default:
-                          return Container();
-                      }
+                  final List<Widget> children =
+                      homeManager.sections.map<Widget>((section) {
+                    switch (section.type) {
+                      case 'List':
+                        return SectionList(section);
+                      case 'Staggered':
+                        return SectionStaggered(section);
+                      default:
+                        return Container();
                     }
-                  ).toList();
+                  }).toList();
 
-                  if(homeManager.editing){
+                  if (homeManager.editing) {
                     children.add(AddSectionWidget(homeManager));
                   }
 

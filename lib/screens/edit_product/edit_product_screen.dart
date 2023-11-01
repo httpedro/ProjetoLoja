@@ -6,8 +6,8 @@ import 'package:libelulas/screens/edit_product/components/sizes_form.dart';
 import 'package:provider/provider.dart';
 
 class EditProductScreen extends StatelessWidget {
-  EditProductScreen(Product? p) :
-        editing = p != null,
+  EditProductScreen(Product? p)
+      : editing = p != null,
         product = p != null ? p.clone() : Product();
 
   final Product? product;
@@ -43,11 +43,9 @@ class EditProductScreen extends StatelessWidget {
                         border: InputBorder.none,
                       ),
                       style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600
-                      ),
-                      validator: (name){
-                        if(name!.length < 3 ){
+                          fontSize: 20, fontWeight: FontWeight.w600),
+                      validator: (name) {
+                        if (name!.length < 3) {
                           return 'Título muito curto!';
                         }
                         return null;
@@ -84,52 +82,58 @@ class EditProductScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       initialValue: product!.description,
-                      style: const TextStyle(
-                        fontSize: 16
-                      ),
+                      style: const TextStyle(fontSize: 16),
                       decoration: const InputDecoration(
-                        hintText: 'Descrição',
-                        border: InputBorder.none
-                      ),
+                          hintText: 'Descrição', border: InputBorder.none),
                       maxLines: null,
-                      validator: (desc){
-                        if(desc!.length<10){
+                      validator: (desc) {
+                        if (desc!.length < 10) {
                           return 'Descrição muito curta';
-                        }
-                        else {
+                        } else {
                           return null;
                         }
                       },
                       onSaved: (desc) => product!.description = desc,
                     ),
                     SizesForm(product),
-                    const SizedBox(height: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Consumer<Product>(
-                      builder: (_, product, __){
+                      builder: (_, product, __) {
                         return SizedBox(
                           height: 44,
                           child: ElevatedButton(
-                            onPressed: !product.loading ? () async {
-                              if (formKey.currentState!.validate()) {
-                                formKey.currentState!.save();
+                            onPressed: !product.loading
+                                ? () async {
+                                    if (formKey.currentState!.validate()) {
+                                      formKey.currentState!.save();
 
-                                await product!.save();
+                                      await product!.save();
 
-                                context.read<ProductManager>().update(product);
+                                      context
+                                          .read<ProductManager>()
+                                          .update(product);
 
-                                Navigator.of(context).pop();
-                              }
-                            } : null,
+                                      Navigator.of(context).pop();
+                                    }
+                                  }
+                                : null,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: primaryColor,
                               foregroundColor: Colors.white,
-                              disabledForegroundColor: primaryColor.withAlpha(100),
+                              disabledForegroundColor:
+                                  primaryColor.withAlpha(100),
                             ),
-                            child: product.loading ?
-                            const CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation(Colors.white),
-                            ) :
-                            const Text('Salvar', style: TextStyle(fontSize: 18.0),),
+                            child: product.loading
+                                ? const CircularProgressIndicator(
+                                    valueColor:
+                                        AlwaysStoppedAnimation(Colors.white),
+                                  )
+                                : const Text(
+                                    'Salvar',
+                                    style: TextStyle(fontSize: 18.0),
+                                  ),
                           ),
                         );
                       },

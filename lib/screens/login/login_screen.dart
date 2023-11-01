@@ -22,21 +22,22 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
         actions: <Widget>[
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.0), // Adicione margens horizontais para criar espaço
+            margin: EdgeInsets.symmetric(
+                horizontal:
+                    20.0), // Adicione margens horizontais para criar espaço
             child: TextButton(
-            onPressed: (){
-              Navigator.of(context).pushReplacementNamed('/signup');
-            },
-            style: TextButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 228, 167, 163),
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15), // Ajuste o valor para definir o espaço lateral desejado
- // Cor do botão "Criar Conta"
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed('/signup');
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 237, 141, 141),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              ),
+              child: const Text(
+                "CRIAR CONTA",
+                style: TextStyle(fontSize: 18, color: Colors.black),
+              ),
             ),
-            child: const Text(
-              "CRIAR CONTA",
-              style: TextStyle(fontSize: 18, color: Colors.black),
-            ),
-          ),
           )
         ],
       ),
@@ -49,6 +50,12 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               shrinkWrap: true,
               children: [
+                Container(
+                  width: 100,
+                  height: 110,
+                  child: Image.network(
+                      "https://static.vecteezy.com/system/resources/previews/012/177/132/original/dragonfly-silhouette-free-png.png"),
+                ),
                 TextFormField(
                     controller: emailController,
                     decoration: const InputDecoration(hintText: "E-mail"),
@@ -80,8 +87,9 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
                       context.read<UsuarioAtenticacao>().signIn(
-                          Usuario(email: emailController.text, password: passController.text),
-                          (e) {
+                          Usuario(
+                              email: emailController.text,
+                              password: passController.text), (e) {
                         print(e);
                       }, () {
                         print("Sucesso");
@@ -90,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 229, 144, 138), // Cor do botão "Entrar"
+                    backgroundColor: const Color.fromARGB(255, 229, 144, 138),
                   ),
                   child: const Text("Entrar"),
                 ),

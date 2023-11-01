@@ -14,6 +14,7 @@ import 'package:libelulas/screens/product/product_screen.dart';
 import 'package:libelulas/screens/select_product/select_product_screen.dart';
 import 'package:libelulas/screens/signup/signup_screen.dart';
 import 'package:libelulas/screens/cart/cart_screen.dart';
+import 'package:libelulas/screens/sucess/sucess_screen.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
@@ -92,10 +93,13 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => SelectProductScreen());
             case '/checkout':
               return MaterialPageRoute(builder: (_) => checkoutScreen());
+            case '/sucess':
+              return MaterialPageRoute(builder: (_) => SuccessModal());
             case '/base':
             default:
               return MaterialPageRoute(
-                  builder: (_) => BaseScreen()); //material page route
+                  builder: (_) => BaseScreen(),
+                  settings: settings); //material page route
           }
         },
       ),

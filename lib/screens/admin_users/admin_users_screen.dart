@@ -4,9 +4,9 @@ import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
 import 'package:libelulas/models/admin_users_manager.dart';
 import 'package:provider/provider.dart';
 
-class AdminUsersScreen extends StatelessWidget{
+class AdminUsersScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
@@ -14,29 +14,24 @@ class AdminUsersScreen extends StatelessWidget{
         centerTitle: true,
       ),
       body: Consumer<AdminUsersManager>(
-        builder: (_, adminUsersManager, __){
+        builder: (_, adminUsersManager, __) {
           return AlphabetListScrollView(
-            itemBuilder: (_, index){
+            itemBuilder: (_, index) {
               return ListTile(
                 title: Text(
                   adminUsersManager.users[index].name as String,
                   style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white
-                  ),
+                      fontWeight: FontWeight.w800, color: Colors.black),
                 ),
                 subtitle: Text(
                   adminUsersManager.users[index].email as String,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               );
             },
-            highlightTextStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 20
-            ),
+            highlightTextStyle: TextStyle(color: Colors.black, fontSize: 20),
             indexedHeight: (index) => 80,
             strList: adminUsersManager.names,
             showPreview: true,
