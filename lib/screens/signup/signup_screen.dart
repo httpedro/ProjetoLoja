@@ -32,6 +32,11 @@ class SignUpScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 shrinkWrap: true,
                 children: <Widget>[
+                  Container(
+                    child: Image.asset('lib/assets/logoname.png'),
+                    width: 150,
+                    height: 150,
+                  ),
                   TextFormField(
                     decoration:
                         const InputDecoration(hintText: 'Nome completo'),

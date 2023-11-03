@@ -8,7 +8,6 @@ class CheckoutModel extends ChangeNotifier {
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  // ignore: use_setters_to_change_properties
   void updateCart(CartManager cartManager) {
     this.cartManager = cartManager;
   }
@@ -30,13 +29,11 @@ class CheckoutModel extends ChangeNotifier {
     try {
       final result = await firestore.runTransaction((tx) async {
         final doc = await tx.get(ref);
-        final orderId = doc.data()!['current']
-            as int; // Chame data() em doc para obter o mapa
+        final orderId = doc.data()!['current'] as int;
         await tx.update(ref, {'current': orderId + 1});
         return {'orderId': orderId};
       });
 
-      // Chame a função e acesse o índice
       return result['orderId'] as int;
     } catch (e) {
       debugPrint(e.toString());

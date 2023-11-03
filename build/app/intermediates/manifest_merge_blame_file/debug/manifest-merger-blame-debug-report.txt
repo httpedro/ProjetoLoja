@@ -13,11 +13,11 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\pedri\Music\llll\ProjetoLoja\android\app\src\debug\AndroidManifest.xml:6:5-66
-15-->C:\Users\pedri\Music\llll\ProjetoLoja\android\app\src\debug\AndroidManifest.xml:6:22-64
+15-->C:\Users\pedri\Pictures\opa\ProjetoLoja\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\Users\pedri\Pictures\opa\ProjetoLoja\android\app\src\debug\AndroidManifest.xml:6:22-64
 16    <uses-permission android:name="android.permission.VIBRATE" />
-16-->[:vibration] C:\Users\pedri\Music\llll\ProjetoLoja\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-66
-16-->[:vibration] C:\Users\pedri\Music\llll\ProjetoLoja\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-63
+16-->[:vibration] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-66
+16-->[:vibration] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-63
 17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 17-->[com.google.firebase:firebase-auth:22.1.2] C:\Users\pedri\.gradle\caches\transforms-3\b7396143902b28e5fc1a8d7943d935fb\transformed\jetified-firebase-auth-22.1.2\AndroidManifest.xml:26:5-79
 17-->[com.google.firebase:firebase-auth:22.1.2] C:\Users\pedri\.gradle\caches\transforms-3\b7396143902b28e5fc1a8d7943d935fb\transformed\jetified-firebase-auth-22.1.2\AndroidManifest.xml:26:22-76
@@ -79,37 +79,37 @@
 67            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 68
 69        <service
-69-->[:firebase_auth] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+69-->[:firebase_auth] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
 70            android:name="com.google.firebase.components.ComponentDiscoveryService"
-70-->[:firebase_auth] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+70-->[:firebase_auth] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
 71            android:directBootAware="true"
 71-->[com.google.firebase:firebase-common:20.3.3] C:\Users\pedri\.gradle\caches\transforms-3\6f9fa5902813f78de2aefcdfcdb180f7\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:34:13-43
 72            android:exported="false" >
 72-->[com.google.firebase:firebase-auth:22.1.2] C:\Users\pedri\.gradle\caches\transforms-3\b7396143902b28e5fc1a8d7943d935fb\transformed\jetified-firebase-auth-22.1.2\AndroidManifest.xml:68:13-37
 73            <meta-data
-73-->[:firebase_auth] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+73-->[:firebase_auth] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
 74                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-74-->[:firebase_auth] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+74-->[:firebase_auth] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
 75                android:value="com.google.firebase.components.ComponentRegistrar" />
-75-->[:firebase_auth] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+75-->[:firebase_auth] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 76            <meta-data
-76-->[:firebase_storage] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+76-->[:firebase_storage] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
 77                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
-77-->[:firebase_storage] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-126
+77-->[:firebase_storage] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-126
 78                android:value="com.google.firebase.components.ComponentRegistrar" />
-78-->[:firebase_storage] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+78-->[:firebase_storage] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 79            <meta-data
-79-->[:cloud_firestore] C:\Users\pedri\Music\llll\ProjetoLoja\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+79-->[:cloud_firestore] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
 80                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-80-->[:cloud_firestore] C:\Users\pedri\Music\llll\ProjetoLoja\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-134
+80-->[:cloud_firestore] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-134
 81                android:value="com.google.firebase.components.ComponentRegistrar" />
-81-->[:cloud_firestore] C:\Users\pedri\Music\llll\ProjetoLoja\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+81-->[:cloud_firestore] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 82            <meta-data
-82-->[:firebase_core] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+82-->[:firebase_core] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
 83                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-83-->[:firebase_core] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+83-->[:firebase_core] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
 84                android:value="com.google.firebase.components.ComponentRegistrar" />
-84-->[:firebase_core] C:\Users\pedri\Music\llll\ProjetoLoja\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+84-->[:firebase_core] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 85            <meta-data
 85-->[com.google.firebase:firebase-auth:22.1.2] C:\Users\pedri\.gradle\caches\transforms-3\b7396143902b28e5fc1a8d7943d935fb\transformed\jetified-firebase-auth-22.1.2\AndroidManifest.xml:69:13-71:85
 86                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
@@ -131,21 +131,21 @@
 94        </service>
 95
 96        <provider
-96-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+96-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
 97            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-97-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+97-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
 98            android:authorities="com.example.libelulas.flutter.image_provider"
-98-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+98-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
 99            android:exported="false"
-99-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+99-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 100            android:grantUriPermissions="true" >
-100-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+100-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
 101            <meta-data
-101-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+101-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
 102                android:name="android.support.FILE_PROVIDER_PATHS"
-102-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+102-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
 103                android:resource="@xml/flutter_image_picker_file_paths" />
-103-->[:image_picker_android] C:\Users\pedri\Music\llll\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+103-->[:image_picker_android] C:\Users\pedri\Pictures\opa\ProjetoLoja\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
 104        </provider>
 105
 106        <activity

@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   Container(
-                    child: Image.asset('lib/assets/logonome.png'),
+                    child: Image.asset('lib/assets/logoname.png'),
                     width: 150,
                     height: 150,
                   ),
