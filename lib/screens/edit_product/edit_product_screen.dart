@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:libelulas/models/product_manager.dart';
 import 'package:libelulas/screens/edit_product/components/images_form.dart';
@@ -18,6 +19,7 @@ class EditProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
+    GoogleFonts.carroisGothic();
     return ChangeNotifierProvider.value(
       value: product,
       child: Scaffold(

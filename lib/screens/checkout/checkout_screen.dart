@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:libelulas/common/price_card.dart';
 import 'package:libelulas/models/cart_manager.dart';
 import 'package:libelulas/models/checkout_model.dart';
@@ -9,6 +10,7 @@ class checkoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GoogleFonts.carroisGothic();
     return ChangeNotifierProxyProvider<CartManager, CheckoutModel>(
       create: (_) => CheckoutModel(),
       update: (_, CartManager, CheckoutModel) =>
@@ -17,7 +19,9 @@ class checkoutScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('pagamento'),
+          backgroundColor: Colors.transparent,
         ),
+        backgroundColor: Color.fromARGB(178, 255, 197, 193),
         body: Consumer<CheckoutModel>(
           builder: (_, CheckoutModel, __) {
             return ListView(

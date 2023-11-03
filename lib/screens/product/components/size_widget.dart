@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:libelulas/models/item_size.dart';
 import 'package:libelulas/models/product.dart';
 import 'package:provider/provider.dart';
 
 class SizeWidget extends StatelessWidget {
-
   const SizeWidget({this.size});
 
   final ItemSize? size;
@@ -13,26 +13,25 @@ class SizeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final product = context.watch<Product>();
     final selected = size == product.selectedSize;
+    GoogleFonts.carroisGothic();
 
     Color color;
-    if(!size!.hasStock)
+    if (!size!.hasStock)
       color = Colors.red.withAlpha(50);
-    else if(selected)
+    else if (selected)
       color = Theme.of(context).primaryColor;
     else
       color = Colors.grey;
 
     return GestureDetector(
-      onTap: (){
-        if(size!.hasStock){
+      onTap: () {
+        if (size!.hasStock) {
           product.selectedSize = size;
         }
       },
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(
-            color: color
-          ),
+          border: Border.all(color: color),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -59,7 +58,7 @@ class SizeWidget extends StatelessWidget {
               child: Text(
                 'Estoque: ${size!.stock.toString()}',
                 style: TextStyle(
-                  color: color, 
+                  color: color,
                 ),
               ),
             )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
 import 'package:libelulas/models/page_manager.dart';
 import 'package:libelulas/models/user_manager.dart';
@@ -14,6 +15,7 @@ class BaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GoogleFonts.carroisGothic();
     return Provider(
       create: (_) => PageManager(pageController),
       child: Consumer<UsuarioAtenticacao>(
@@ -30,16 +32,14 @@ class BaseScreen extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   title: const Text('Meus pedidos'),
                   centerTitle: true,
-
                 ),
               ),
               Scaffold(
                 drawer: const CustomDrawer(),
                 appBar: AppBar(
-                  backgroundColor: Colors.transparent,
+                  backgroundColor: Color.fromARGB(0, 255, 255, 255),
                   title: const Text('Lojas'),
                   centerTitle: true,
-
                 ),
               ),
               if (userManager.adminEnabled) ...[
@@ -47,10 +47,9 @@ class BaseScreen extends StatelessWidget {
                 Scaffold(
                   drawer: CustomDrawer(),
                   appBar: AppBar(
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                     title: const Text('Pedidos'),
                     centerTitle: true,
-
                   ),
                 ),
               ]

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:libelulas/common/custom_drawer/custom_drawer.dart';
 import 'package:libelulas/models/home.manager.dart';
 import 'package:libelulas/models/user_manager.dart';
@@ -11,6 +12,7 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    GoogleFonts.carroisGothic();
     return Scaffold(
       drawer: CustomDrawer(),
       body: Stack(
@@ -18,8 +20,8 @@ class HomeScreen extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: const [
-              Color.fromARGB(255, 211, 118, 130),
-              Color.fromARGB(255, 253, 181, 168)
+              Color.fromARGB(255, 255, 196, 196),
+              Color.fromARGB(255, 255, 243, 241)
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           ),
           CustomScrollView(
@@ -30,13 +32,16 @@ class HomeScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: Colors.transparent, //cabeçalho
                 flexibleSpace: const FlexibleSpaceBar(
-                  title: Text('Libélula'),
+                  title: Text(
+                    'Libélula',
+                    style: TextStyle(color: Colors.black),
+                  ),
                   centerTitle: true,
                 ),
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.shopping_cart),
-                    color: Colors.white,
+                    color: const Color.fromARGB(255, 0, 0, 0),
                     onPressed: () => Navigator.of(context).pushNamed('/cart'),
                   ),
                   Consumer2<UsuarioAtenticacao, HomeManager>(

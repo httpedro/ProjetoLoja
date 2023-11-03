@@ -7,12 +7,11 @@ import 'package:libelulas/screens/edit_product/components/image_source_sheet.dar
 import 'package:provider/provider.dart';
 
 class AddTileWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final section = context.watch<Section>();
 
-    void onImageSelected(File file){
+    void onImageSelected(File file) {
       section.addItem(SectionItem(image: file));
       Navigator.of(context).pop();
     }
@@ -20,7 +19,7 @@ class AddTileWidget extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           if (Platform.isAndroid) {
             showModalBottomSheet(
               context: context,
